@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Avatar, Banner, CakeIcon, Container, EditButton, Follows, LocationIcon, ProfileData } from './styles';
+import Feed from '../Feed';
 
 const ProfilePage: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const ProfilePage: React.FC = () => {
         </Follows>
       </ProfileData>
       
+      <Feed />
       
     </Container>
   );

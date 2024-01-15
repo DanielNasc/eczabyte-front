@@ -10,7 +10,7 @@ export default createGlobalStyle`
     html, body, #root {
         max-height: 100vh;
         max-width: 100vw;
-        
+
         width: 100%;
         height: 100%;
     }
@@ -29,7 +29,7 @@ export default createGlobalStyle`
         --white: #d0d5d7;
         --gray: #717f7d;
         --outline: #2f3336;
-        --retweet: #00c060;
+        --share: #00c060;
         --like: #e8265e;
         --eczabyte: #8732dc;
         --eczabyte-dark-hover: #190b28;

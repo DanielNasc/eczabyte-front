@@ -5,7 +5,7 @@ interface Props {
 }
 
 export default styled.button<Props>`
-    background: ${props => (props.outlined ? 'transparent' : 'var(--eczabyte)')};
+    background-color: ${props => (props.outlined ? 'transparent' : 'var(--eczabyte)')};
     color: ${props => (props.outlined ? 'var(--eczabyte)' : 'var(--white)')};
     border: ${props => (props.outlined ? '1px solid var(--eczabyte)' : 'none')};
     
@@ -19,6 +19,8 @@ export default styled.button<Props>`
     outline: 0;
     
     &:hover {
-        background: ${props => (props.outlined ? 'var(--twitter-dark-hover)' : 'var(--eczabyte-light)')};
+        background-color: ${props => (props.outlined ? 'var(--twitter-dark-hover)' : 'var(--eczabyte-light)')};
+        transition: background-color ease-in 0.3s;
     }
+    transition: background-color ease-out 0.3s;
 `;
