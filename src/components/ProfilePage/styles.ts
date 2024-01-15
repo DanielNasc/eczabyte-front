@@ -1,7 +1,7 @@
-import { css, styled } from "styled-components";
+import { css, styled } from 'styled-components';
 
-import { LocationOn, Cake } from "../../styles/Icons";
-import Button from "../Button";
+import { LocationOn, Cake } from '../../styles/Icons';
+import Button from '../Button';
 
 export const Container = styled.div`
   display: flex;
@@ -86,7 +86,7 @@ export const Follows = styled.div`
     font-size: 15px;
     color: var(--gray);
 
-    & * span {
+    & + span {
       margin-left: 20px;
     }
   }

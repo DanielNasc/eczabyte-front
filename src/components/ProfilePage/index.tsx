@@ -1,6 +1,15 @@
 import React from 'react';
 
-import { Avatar, Banner, CakeIcon, Container, EditButton, Follows, LocationIcon, ProfileData } from './styles';
+import {
+  Avatar,
+  Banner,
+  CakeIcon,
+  Container,
+  EditButton,
+  Follows,
+  LocationIcon,
+  ProfileData,
+} from './styles';
 import Feed from '../Feed';
 
 const ProfilePage: React.FC = () => {
@@ -15,7 +24,10 @@ const ProfilePage: React.FC = () => {
 
         <h1>Usuário ユーザー 👤</h1>
         <h2>@user</h2>
-        <p>Pessoa do planeta terra, usuário do <a href="https://eczabyte.com">eczabyte.com</a>.</p>
+        <p>
+          Pessoa do planeta terra, usuário do{' '}
+          <a href="https://eczabyte.com">eczabyte.com</a>.
+        </p>
 
         <ul>
           <li>
@@ -37,11 +49,10 @@ const ProfilePage: React.FC = () => {
           </span>
         </Follows>
       </ProfileData>
-      
+
       <Feed />
-      
     </Container>
   );
-}
+};
 
 export default ProfilePage;

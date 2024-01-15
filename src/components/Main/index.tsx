@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   BackIcon,
   BellIcon,
@@ -9,8 +9,8 @@ import {
   HomeIcon,
   ProfileInfo,
   SearchIcon,
-} from "./styles";
-import ProfilePage from "../ProfilePage";
+} from './styles';
+import ProfilePage from '../ProfilePage';
 
 const Main = () => {
   return (
