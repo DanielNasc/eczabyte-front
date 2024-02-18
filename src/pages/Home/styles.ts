@@ -8,6 +8,19 @@ import {
   Email,
 } from '../../styles/Icons';
 
+export const LogoTypography = styled.p`
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: #1976d2;
+  font-weight: bolder;
+  font-size: 40px;
+  border-radius: 3px;
+  padding: 0px 8px;
+`;
+
 export const BackIcon = styled(ArrowLeft)`
   width: 24px;
   height: 24px;
