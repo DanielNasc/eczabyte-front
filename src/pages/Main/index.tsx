@@ -10,7 +10,7 @@ import {
   ProfileInfo,
   SearchIcon,
 } from './styles';
-import ProfilePage from '../ProfilePage';
+import ProfilePage from '../../components/ProfilePage';
 
 const Main = () => {
   return (
