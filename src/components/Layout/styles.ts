@@ -1,5 +1,14 @@
 import styled, { css } from 'styled-components';
-import { HomeCircle } from '../../styles/Icons';
+import {
+  MoreHoriz,
+  MessageSquare,
+  Bookmark,
+  Bell,
+  Hash,
+  HomeAlt,
+  Person,
+  Settings,
+} from '../../styles/Icons';
 
 export const Container = styled.div`
   background: var(--primary);
@@ -8,17 +17,39 @@ export const Container = styled.div`
 
 export const Button = styled.button`
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   font-size: 14px;
   width: 100%;
+  padding: 20px;
   height: 50px;
-  border-radius: 3px;
+  border-radius: 25px;
   transition-duration: 500ms;
   gap: 5px;
+  border: 1px solid transparent;
   &:hover {
-    background-color: blue;
+    border: 1px solid #555;
+    background-color: black;
     cursor: pointer;
+  }
+`;
+
+export const CreateTweetBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: blue;
+  padding: 10px 20px;
+  margin: 25px 0;
+  width: 100%;
+  border-radius: 25px;
+  transition-duration: 500ms;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: black;
+    cursor: pointer;
+    border: 1px solid #555;
   }
 `;
 
@@ -42,6 +73,27 @@ const iconCSS = css`
   width: 19px;
   height: 19px;
 `;
-export const HomeCircleIcon = styled(HomeCircle)`
+export const HomeAltIcon = styled(HomeAlt)`
+  ${iconCSS}
+`;
+export const HashIcon = styled(Hash)`
+  ${iconCSS}
+`;
+export const MessageSquareIcon = styled(MessageSquare)`
+  ${iconCSS}
+`;
+export const BookmarkIcon = styled(Bookmark)`
+  ${iconCSS}
+`;
+export const BellIcon = styled(Bell)`
+  ${iconCSS}
+`;
+export const MoreHorizIcon = styled(MoreHoriz)`
+  ${iconCSS}
+`;
+export const PersonIcon = styled(Person)`
+  ${iconCSS}
+`;
+export const SettingsIcon = styled(Settings)`
   ${iconCSS}
 `;

@@ -1,15 +1,26 @@
 import GlobalStyles from '../../styles/GlobalStyles';
-import { Button, Container, Wrapper } from './styles';
+import {
+  CreateTweetBtn,
+  BellIcon,
+  BookmarkIcon,
+  Button,
+  Container,
+  HashIcon,
+  MessageSquareIcon,
+  MoreHorizIcon,
+  PersonIcon,
+  SettingsIcon,
+  Wrapper,
+  HomeAltIcon,
+} from './styles';
 
 import {
-  BellIcon,
   BottomMenu,
   EmailIcon,
   HomeIcon,
   SearchIcon,
 } from '../../pages/Home/styles';
 import Header from '../Header';
-import { HomeCircleIcon } from './styles';
 
 type LayoutType = {
   children: React.ReactNode;
@@ -27,25 +38,47 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             flexDirection: 'column',
             justifyContent: 'center',
             rowGap: '10px',
-            width: '180px',
             alignItems: 'start',
             position: 'fixed',
             top: '0',
             left: '0',
+            padding: '0 30px',
             borderRight: '1px solid #1e1e1e',
           }}
         >
           <Button>
-            <HomeCircleIcon />
+            <HomeAltIcon />
             <p>Home</p>
           </Button>
-          <Button>Explore</Button>
-          <Button>Notifications</Button>
-          <Button>Messages</Button>
-          <Button>Bookmarks</Button>
-          <Button>Profile</Button>
-          <Button>Settings</Button>
-          <Button>Tweet</Button>
+          <Button>
+            <HashIcon />
+            <p>Explore</p>
+          </Button>
+          <Button>
+            <BellIcon />
+            <p>Notifications</p>
+          </Button>
+          <Button>
+            <MessageSquareIcon />
+            <p>Messages</p>
+          </Button>
+          <Button>
+            <BookmarkIcon />
+            <p>Bookmarks</p>
+          </Button>
+          <Button>
+            <PersonIcon />
+            <p>Profile</p>
+          </Button>
+          <Button>
+            <MoreHorizIcon />
+            <p>More</p>
+          </Button>
+          <Button>
+            <SettingsIcon />
+            <p>Settings</p>
+          </Button>
+          <CreateTweetBtn>Tweet</CreateTweetBtn>
         </aside>
         <Wrapper>
           <Header hasBackPage={hasBackPage}>
