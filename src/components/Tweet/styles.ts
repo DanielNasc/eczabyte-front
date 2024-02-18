@@ -1,4 +1,4 @@
-import { styled, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Chat, Favorite, Share } from '../../styles/Icons';
 
 export const Container = styled.div`
