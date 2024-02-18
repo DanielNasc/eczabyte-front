@@ -1,19 +1,10 @@
 import styled, { css } from 'styled-components';
 import { Chat, Favorite, Share } from '../../styles/Icons';
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--outlined);
-
-  max-width: 100%;
-`;
-
 export const Retweeted = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 
   font-size: 13px;
   color: var(--gray);
@@ -33,10 +24,6 @@ export const Avatar = styled.div`
   border-radius: 50px;
   flex-shrink: 0;
   background: var(--gray);
-
-  position: absolute;
-  top: 0;
-  left: 0;
 `;
 
 export const Content = styled.div`
@@ -45,7 +32,6 @@ export const Content = styled.div`
 
   width: 100%;
   margin-top: 2px;
-  padding-left: 59px;
 `;
 
 export const Dot = styled.div`
@@ -57,22 +43,31 @@ export const Dot = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-left: 8px;
 
   font-size: 15px;
   white-space: nowrap;
+
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   > strong {
     margin-right: 5px;
   }
 
-  > span,
+  > div p,
   time {
     color: var(--gray);
   }
 
   > strong,
-  span {
+  p {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -80,8 +75,9 @@ export const Header = styled.div`
 `;
 
 export const Description = styled.p`
-  font-size: 14px;
-  margin-top: 4px;
+  font-size: 15px;
+  margin-top: 18px;
+  color: #adadad;
 `;
 
 export const ImageContent = styled.div`
@@ -90,7 +86,7 @@ export const ImageContent = styled.div`
   height: min(285px, max(175px, 41vw));
 
   background: var(--outline);
-  border-radius: 34px;
+  border-radius: 7px;
 
   cursor: pointer;
   &:hover {
@@ -107,6 +103,7 @@ export const Icons = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 11px auto 0;
+  padding: 10px 0;
   width: 100%; /* mobile */
 
   @media (min-width: 330px) {
@@ -142,7 +139,6 @@ export const ShareIcon = styled(Share)`
   width: 16px;
   height: 16px;
 
-  margin-left: 35px;
   margin-right: 9px;
 
   > path {
@@ -150,7 +146,7 @@ export const ShareIcon = styled(Share)`
   }
 `;
 
-export const Status = styled.div`
+export const Status = styled.a`
   display: flex;
   align-items: center;
 

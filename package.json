@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@styled-icons/boxicons-solid": "^10.47.0",
     "@styled-icons/heroicons-solid": "^10.47.0",
     "@styled-icons/material": "^10.47.0",
     "@styled-icons/material-outlined": "^10.47.0",

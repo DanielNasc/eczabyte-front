@@ -1,29 +1,28 @@
 import React from 'react';
-
+import Feed from '../../components/Feed';
 import {
   Avatar,
   Banner,
   CakeIcon,
-  Container,
   EditButton,
   Follows,
   LocationIcon,
   ProfileData,
+  Tab,
 } from './styles';
-import Feed from '../Feed';
+import Layout from '../../components/Layout';
 
-const ProfilePage: React.FC = () => {
+const Profile: React.FC = () => {
   return (
-    <Container>
+    <Layout>
       <Banner>
         <Avatar />
       </Banner>
-
       <ProfileData>
         <EditButton outlined>Editar perfil</EditButton>
 
-        <h1>Usuário ユーザー 👤</h1>
-        <h2>@user</h2>
+        <h2>Eczabyte ユーザー 👤</h2>
+        <h3>@eczabyte</h3>
         <p>
           Pessoa do planeta terra, usuário do{' '}
           <a href="https://eczabyte.com">eczabyte.com</a>.
@@ -42,17 +41,19 @@ const ProfilePage: React.FC = () => {
 
         <Follows>
           <span>
-            seguindo <strong>69</strong>
+            <strong>69 </strong>
+            seguindo
           </span>
           <span>
-            <strong>42 </strong> seguidores
+            <strong>42 </strong>
+            seguidores
           </span>
         </Follows>
       </ProfileData>
-
+      <Tab>Tweets</Tab>
       <Feed />
-    </Container>
+    </Layout>
   );
 };
 
-export default ProfilePage;
+export default Profile;

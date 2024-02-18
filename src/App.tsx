@@ -1,13 +1,11 @@
-import React from 'react';
-
-import GlobalStyles from './styles/GlobalStyles';
-import Layout from './components/Layout';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <>
-      <Layout />
-      <GlobalStyles />
+      <Home />
+      {/* <Profile /> */}
     </>
   );
 }
