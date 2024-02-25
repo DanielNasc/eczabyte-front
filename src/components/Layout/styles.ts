@@ -13,6 +13,47 @@ import {
 export const Container = styled.div`
   background: var(--primary);
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  @media (min-width: 680px) {
+    grid-template-columns: 1fr auto 1fr;
+  }
+`;
+
+export const Wrapper = styled.div`
+  height: 100%;
+  margin: 0 auto;
+  width: min(800px, 100%);
+
+  @media (min-width: 500px) {
+    border-left: 1px solid var(--outline);
+    border-right: 1px solid var(--outline);
+  }
+`;
+
+export const AsideNav = styled.aside`
+  display: none;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+  align-items: start;
+  position: sticky;
+  max-height: 100vh;
+  top: 0;
+  left: 0;
+  width: 220px;
+  padding: 0 20px;
+  border-right: 1px solid #1e1e1e;
+
+  @media (min-width: 680px) {
+    display: flex;
+  }
+  @media (min-width: 1080px) {
+    width: 280px;
+  }
 `;
 
 export const Button = styled.button`
@@ -50,22 +91,6 @@ export const CreateTweetBtn = styled.button`
     background-color: black;
     cursor: pointer;
     border: 1px solid #555;
-  }
-`;
-
-export const Wrapper = styled.div`
-  height: 100%;
-  margin: 0 auto;
-
-  width: min(601px, 100%);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  @media (min-width: 500px) {
-    border-left: 1px solid var(--outline);
-    border-right: 1px solid var(--outline);
   }
 `;
 

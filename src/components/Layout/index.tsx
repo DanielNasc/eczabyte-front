@@ -12,6 +12,7 @@ import {
   SettingsIcon,
   Wrapper,
   HomeAltIcon,
+  AsideNav,
 } from './styles';
 
 import {
@@ -21,6 +22,7 @@ import {
   SearchIcon,
 } from '../../pages/Home/styles';
 import Header from '../Header';
+import { Height } from '@styled-icons/material-outlined';
 
 type LayoutType = {
   children: React.ReactNode;
@@ -31,21 +33,7 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
   return (
     <>
       <Container>
-        <aside
-          style={{
-            display: 'flex',
-            height: '100%',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            rowGap: '10px',
-            alignItems: 'start',
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            padding: '0 30px',
-            borderRight: '1px solid #1e1e1e',
-          }}
-        >
+        <AsideNav>
           <Button>
             <HomeAltIcon />
             <p>Home</p>
@@ -79,7 +67,7 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             <p>Settings</p>
           </Button>
           <CreateTweetBtn>Tweet</CreateTweetBtn>
-        </aside>
+        </AsideNav>
         <Wrapper>
           <Header hasBackPage={hasBackPage}>
             <strong>Eczabyte ユーザー 👤</strong>
@@ -107,6 +95,7 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             <EmailIcon />
           </BottomMenu>
         </Wrapper>
+        <div></div>
       </Container>
       <GlobalStyles />
     </>
