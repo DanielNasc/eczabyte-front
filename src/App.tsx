@@ -1,11 +1,10 @@
-import GlobalStyles from './styles/GlobalStyles';
-import Layout from './components/Layout';
+import Home from './pages/Home';
 
 function App() {
   return (
     <>
-      <Layout />
-      <GlobalStyles />
+      <Home />
+      {/* <Profile /> */}
     </>
   );
 }

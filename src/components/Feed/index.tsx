@@ -1,20 +1,77 @@
 import React from 'react';
-import { Container, Tab, Tweets } from './styles';
+import { Tweets } from './styles';
 import Tweet from '../Tweet';
+
+const myTweets = [
+  {
+    id: 1,
+    name: 'Eczabyte',
+    user: 'eczabyte',
+    text: 'Eczabyte é um desenvolvedor entusiasmado que adora compartilhar insights sobre programação, desenvolvimento web e explorar novas tecnologias. Vamos dar uma olhada mais de perto em alguns dos tweets recentes de Eczabyte.',
+    likes: 5,
+    retweets: 2,
+    date: '15 de jan',
+    comments: 12,
+  },
+  {
+    id: 2,
+    name: 'Eczabyte',
+    user: 'eczabyte',
+    text: "Demonstrating a passion for ReactJS, Eczabyte exclaimed, 'ReactJS é incrível! #ReactJS #DesenvolvimentoWeb.' The tweet resonated with the community, earning 10 likes, 3 retweets, and sparking a conversation with 1 comment on the same day.",
+    likes: 10,
+    retweets: 3,
+    date: '15 de jan',
+    comments: 1,
+  },
+  {
+    id: 3,
+    name: 'Eczabyte',
+    user: 'eczabyte',
+    text: "Eczabyte showcased their dedication to coding with a tweet that read, 'Trabalhando duro no meu projeto React hoje. 💻 #Coding.' The tweet received 8 likes, 1 retweet, and 4 engaging comments on the 15th of January.",
+    likes: 8,
+    retweets: 1,
+    date: '15 de jan',
+    comments: 4,
+  },
+  {
+    id: 4,
+    name: 'Eczabyte',
+    user: 'eczabyte',
+    text: "Highlighting a love for continuous learning, Eczabyte shared, 'Adoro aprender novas tecnologias! #TechEnthusiast.' This tweet gained significant traction, accumulating 15 likes, 5 retweets, and 6 insightful comments on the same day.",
+    likes: 15,
+    retweets: 5,
+    date: '15 de jan',
+    comments: 6,
+  },
+  {
+    id: 5,
+    name: 'Eczabyte',
+    user: 'eczabyte',
+    text: "Keeping up with the latest developments, Eczabyte checked in with the community, saying, 'Conferindo as últimas atualizações do React. #ReactUpdates.' The tweet received 12 likes, 4 retweets, and an impressive 22 comments, fostering a vibrant discussion on the 15th of January.",
+    likes: 12,
+    retweets: 4,
+    date: '15 de jan',
+    comments: 22,
+  },
+];
 
 const Feed: React.FC = () => {
   return (
-    <Container>
-      <Tab>Tweets</Tab>
-
-      <Tweets>
-        <Tweet></Tweet>
-        <Tweet></Tweet>
-        <Tweet></Tweet>
-        <Tweet></Tweet>
-        <Tweet></Tweet>
-      </Tweets>
-    </Container>
+    <Tweets>
+      {myTweets.map((tweet) => (
+        <Tweet
+          id={tweet.id}
+          key={tweet.id}
+          comments={tweet.comments}
+          likes={tweet.likes}
+          retweets={tweet.retweets}
+          name={tweet.name}
+          user={tweet.user}
+          date={tweet.date}
+          text={tweet.text}
+        />
+      ))}
+    </Tweets>
   );
 };
 

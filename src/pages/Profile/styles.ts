@@ -1,19 +1,27 @@
 import styled, { css } from 'styled-components';
 
 import { LocationOn, Cake } from '../../styles/Icons';
-import Button from '../Button';
+import Button from '../../components/Button';
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+export const Tab = styled.div`
+  margin-top: 10px;
+  padding: 11px 0 15px;
+  text-align: center;
 
-  max-height: 100%;
-  overflow-y: auto;
+  font-weight: bold;
+  font-size: 15px;
 
-  scrollbar-width: none; /* firefox */
-  ::-webkit-scrollbar {
-    display: none;
-  } /* chrome */
+  outline: 0;
+  cursor: pointer;
+
+  color: var(--eczabyte);
+  border-bottom: 2px solid var(--eczabyte);
+
+  &:hover {
+    background-color: var(--eczabyte-dark-hover);
+    transition: background-color ease-in 0.4s;
+  }
+  transition: background-color ease-out 0.4s;
 `;
 
 export const Banner = styled.div`
@@ -38,17 +46,17 @@ export const Avatar = styled.div`
   left: 15px;
 `;
 
-export const ProfileData = styled.div`
+export const ProfileData = styled.section`
   padding: min(calc(10vw + 7px), 67px) 16px 0;
   display: flex;
   flex-direction: column;
   position: relative;
 
-  > h1 {
+  > h2 {
     font-weight: bold;
     font-size: 19px;
   }
-  > h2 {
+  > h3 {
     font-weight: normal;
     font-size: 15px;
 
@@ -79,7 +87,7 @@ export const ProfileData = styled.div`
   }
 `;
 
-export const Follows = styled.div`
+export const Follows = styled.p`
   display: flex;
 
   > span {

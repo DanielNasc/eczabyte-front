@@ -6,6 +6,7 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         color: var(--white);
+        scroll-margin: 20vh;
     }
     html, body, #root {
         max-height: 100vh;
@@ -21,6 +22,7 @@ export default createGlobalStyle`
     }
     html {
         background: var(--primary);
+        scroll-behavior: smooth;
     }
     :root {
         --primary: #09050f;
