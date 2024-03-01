@@ -2,14 +2,9 @@ import GlobalStyles from '../../styles/GlobalStyles';
 import {
   CreateTweetBtn,
   BellIcon,
-  BookmarkIcon,
   Button,
   Container,
-  HashIcon,
-  MessageSquareIcon,
-  MoreHorizIcon,
   PersonIcon,
-  SettingsIcon,
   Wrapper,
   HomeAltIcon,
 } from './styles';
@@ -50,7 +45,7 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             <HomeAltIcon />
             <p>Home</p>
           </Button>
-          <Button>
+          {/* <Button>
             <HashIcon />
             <p>Explore</p>
           </Button>
@@ -65,19 +60,19 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
           <Button>
             <BookmarkIcon />
             <p>Bookmarks</p>
-          </Button>
+          </Button> */}
           <Button>
             <PersonIcon />
             <p>Profile</p>
           </Button>
-          <Button>
+          {/* <Button>
             <MoreHorizIcon />
             <p>More</p>
-          </Button>
-          <Button>
+          </Button> */}
+          {/* <Button>
             <SettingsIcon />
             <p>Settings</p>
-          </Button>
+          </Button> */}
           <CreateTweetBtn>Tweet</CreateTweetBtn>
         </aside>
         <Wrapper>

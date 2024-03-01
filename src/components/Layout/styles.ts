@@ -63,10 +63,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media (min-width: 500px) {
+  /* @media (min-width: 500px) {
     border-left: 1px solid var(--outline);
     border-right: 1px solid var(--outline);
-  }
+  } */
 `;
 
 const iconCSS = css`
