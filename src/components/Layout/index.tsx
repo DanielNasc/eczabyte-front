@@ -9,6 +9,11 @@ import {
   HomeAltIcon,
   NewTweetModal,
   NewTweetForm,
+  ModalTitle,
+  ModaTextarea,
+  AsideBar,
+  Footer,
+  FooterMsg,
 } from './styles';
 
 import {
@@ -41,23 +46,8 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             method="post"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3
-              style={{
-                width: 'fit-content',
-                fontSize: '1.5em',
-                fontWeight: '700',
-              }}
-            >
-              Novo Tweet
-            </h3>
-            <textarea
-              style={{
-                border: '1px solid #1e1e1e',
-                padding: '10px',
-                borderRadius: '3px',
-                fontSize: '0.7em',
-                resize: 'none',
-              }}
+            <ModalTitle>Novo Tweet</ModalTitle>
+            <ModaTextarea
               rows={6}
               cols={50}
               id="tweet-message"
@@ -75,21 +65,7 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
         </NewTweetModal>
       )}
       <Container>
-        <aside
-          style={{
-            display: 'flex',
-            height: '100%',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            rowGap: '10px',
-            alignItems: 'start',
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            padding: '0 30px',
-            borderRight: '1px solid #1e1e1e',
-          }}
-        >
+        <AsideBar>
           <Button>
             <HomeAltIcon />
             <p>Home</p>
@@ -129,27 +105,16 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
           >
             Tweet
           </CreateTweetBtn>
-        </aside>
+        </AsideBar>
         <Wrapper>
           <Header hasBackPage={hasBackPage}>
             <strong>Eczabyte ユーザー 👤</strong>
             <span>666 Tweets</span>
           </Header>
           {children}
-          <footer
-            style={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '20px 0',
-              borderBottom: '1px solid var(--outline)',
-            }}
-          >
-            <p style={{ fontWeight: '800', color: '#999' }}>
-              Develop By DLL-MG
-            </p>
-          </footer>
+          <Footer>
+            <FooterMsg>Develop By DLL-MG</FooterMsg>
+          </Footer>
           <BottomMenu>
             <HomeIcon className="active" />
             <SearchIcon />
