@@ -69,6 +69,34 @@ export const Wrapper = styled.div`
   } */
 `;
 
+export const NewTweetModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  max-width: 100vw;
+  z-index: 21;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 20px;
+  backdrop-filter: blur(5px);
+`;
+
+export const NewTweetForm = styled.form`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 70px 120px;
+  background-color: #000;
+  border-radius: 7px;
+  gap: 30px;
+`;
+
 const iconCSS = css`
   width: 19px;
   height: 19px;

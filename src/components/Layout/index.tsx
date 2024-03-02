@@ -7,6 +7,8 @@ import {
   PersonIcon,
   Wrapper,
   HomeAltIcon,
+  NewTweetModal,
+  NewTweetForm,
 } from './styles';
 
 import {
@@ -16,6 +18,7 @@ import {
   SearchIcon,
 } from '../../pages/Home/styles';
 import Header from '../Header';
+import { useState } from 'react';
 
 type LayoutType = {
   children: React.ReactNode;
@@ -23,8 +26,54 @@ type LayoutType = {
 };
 
 function Layout({ children, hasBackPage = true }: LayoutType) {
+  const [addTweet, setAddTweet] = useState<boolean>(false);
+
   return (
     <>
+      {addTweet && (
+        <NewTweetModal
+          onClick={() => {
+            setAddTweet(false);
+          }}
+        >
+          <NewTweetForm
+            action="."
+            method="post"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3
+              style={{
+                width: 'fit-content',
+                fontSize: '1.5em',
+                fontWeight: '700',
+              }}
+            >
+              Novo Tweet
+            </h3>
+            <textarea
+              style={{
+                border: '1px solid #1e1e1e',
+                padding: '10px',
+                borderRadius: '3px',
+                fontSize: '0.7em',
+                resize: 'none',
+              }}
+              rows={6}
+              cols={50}
+              id="tweet-message"
+              placeholder="Use sua imaginação..."
+            />
+            <CreateTweetBtn
+              style={{
+                margin: 0,
+                maxWidth: '140px',
+              }}
+            >
+              Criar
+            </CreateTweetBtn>
+          </NewTweetForm>
+        </NewTweetModal>
+      )}
       <Container>
         <aside
           style={{
@@ -73,7 +122,13 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             <SettingsIcon />
             <p>Settings</p>
           </Button> */}
-          <CreateTweetBtn>Tweet</CreateTweetBtn>
+          <CreateTweetBtn
+            onClick={() => {
+              setAddTweet(true);
+            }}
+          >
+            Tweet
+          </CreateTweetBtn>
         </aside>
         <Wrapper>
           <Header hasBackPage={hasBackPage}>
