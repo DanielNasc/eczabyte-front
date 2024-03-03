@@ -13,13 +13,13 @@ import {
 export const Container = styled.div`
   background: var(--primary);
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
+  /* display: grid;
+  grid-template-columns: auto;
   justify-items: center;
 
   @media (min-width: 680px) {
     grid-template-columns: 1fr auto 1fr;
-  }
+  } */
 `;
 
 export const Wrapper = styled.div`
@@ -31,11 +31,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  /* 
   @media (min-width: 500px) {
     border-left: 1px solid var(--outline);
     border-right: 1px solid var(--outline);
-  }
+  } */
 `;
 
 export const AsideNav = styled.aside`
@@ -194,7 +194,7 @@ export const Footer = styled.footer`
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid var(--outline);
+  /* border-bottom: 1px solid var(--outline); */
 `;
 
 export const FooterMsg = styled.p`

@@ -155,7 +155,7 @@ function Layout({
           </BottomMenu>
           <div></div>
         </Wrapper>
-        <div></div>
+        {/* <div></div> */}
       </Container>
       <GlobalStyles />
     </>
