@@ -6,10 +6,6 @@ export const PageNotFound = styled.div`
   justify-content: center;
   align-items: center;
   transform: translateY(35vh);
-  /* background-color: var(--primary);
-  background-color: red;
-  max-height: 100vh;
-  height: 100%; */
 
   .title {
     font-size: 150px;
@@ -40,7 +36,6 @@ export const PageNotFound = styled.div`
     font-weight: bold;
     cursor: pointer;
     transition-duration: 400ms;
-    /* margin-top: 50px; */
     &:hover {
       scale: 105%;
     }

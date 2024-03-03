@@ -14,6 +14,7 @@ import {
   Retweeted,
   ShareIcon,
   Status,
+  TweetContainer,
 } from './styles';
 import TweetInterface from '../../core/tweet.interface';
 
@@ -21,16 +22,7 @@ const Tweet: React.FC<TweetInterface> = (tweet: TweetInterface) => {
   const [showComents, setShowComents] = useState<boolean>(false);
 
   return (
-    <div
-      id={tweet.id.toString()}
-      style={{
-        padding: '30px 0px',
-        border: '1px solid #1e1e1e',
-        borderLeft: '0',
-        borderRight: '0',
-        borderTop: '0',
-      }}
-    >
+    <TweetContainer id={tweet.id.toString()}>
       <Retweeted>
         <ShareIcon />
         Você compartilhou
@@ -44,13 +36,7 @@ const Tweet: React.FC<TweetInterface> = (tweet: TweetInterface) => {
           >
             <img
               src="https://source.unsplash.com/random/?profile"
-              style={{
-                display: 'flex',
-                width: '49px',
-                height: '49px',
-                borderRadius: '100%',
-                objectFit: 'cover',
-              }}
+              className="tweet-img"
             />
 
             <Header>
@@ -80,7 +66,7 @@ const Tweet: React.FC<TweetInterface> = (tweet: TweetInterface) => {
           </Icons>
         </Content>
       </Body>
-    </div>
+    </TweetContainer>
   );
 };
 

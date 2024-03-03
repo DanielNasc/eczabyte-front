@@ -8,6 +8,23 @@ import {
   Email,
 } from '../../styles/Icons';
 
+export const HomeContainer = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+`;
+
+export const HomeWrapper = styled.div`
+  padding-left: 16px;
+  color: #ababab;
+  margin-top: 30px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bolder;
+`;
+
 export const LogoTypography = styled.p`
   position: relative;
   height: 100%;

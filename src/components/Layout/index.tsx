@@ -85,32 +85,12 @@ function Layout({
               <p>Home</p>
             </Button>
           </Link>
-          {/* <Button>
-            <HashIcon />
-            <p>Explore</p>
-          </Button>
-          <Button>
-            <BellIcon />
-            <p>Notifications</p>
-          </Button>
-          <Button>
-            <MessageSquareIcon />
-            <p>Messages</p>
-          </Button>
-          <Button>
-            <BookmarkIcon />
-            <p>Bookmarks</p>
-          </Button> */}
           <Link className="link-nav" to="/profile">
             <Button>
               <PersonIcon />
               <p>Profile</p>
             </Button>
           </Link>
-          {/* <Button>
-            <MoreHorizIcon />
-            <p>More</p>
-          </Button> */}
           <Link className="link-nav" to="/settings">
             <Button>
               <SettingsIcon />
@@ -155,7 +135,6 @@ function Layout({
           </BottomMenu>
           <div></div>
         </Wrapper>
-        {/* <div></div> */}
       </Container>
       <GlobalStyles />
     </>

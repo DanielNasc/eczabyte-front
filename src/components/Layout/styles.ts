@@ -13,13 +13,6 @@ import {
 export const Container = styled.div`
   background: var(--primary);
   position: relative;
-  /* display: grid;
-  grid-template-columns: auto;
-  justify-items: center;
-
-  @media (min-width: 680px) {
-    grid-template-columns: 1fr auto 1fr;
-  } */
 `;
 
 export const Wrapper = styled.div`
@@ -31,11 +24,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* 
-  @media (min-width: 500px) {
-    border-left: 1px solid var(--outline);
-    border-right: 1px solid var(--outline);
-  } */
 `;
 
 export const AsideNav = styled.aside`
@@ -60,21 +48,6 @@ export const AsideNav = styled.aside`
     width: 280px;
   }
 `;
-
-// FIXME -> What was that? O que era isso?
-// export const AsideBar = styled.aside`
-//   display: flex;
-//   height: 100%;
-//   flex-direction: column;
-//   justify-content: center;
-//   row-gap: 10px;
-//   align-items: start;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   padding: 0 30px;
-//   border-right: 1px solid #1e1e1e;
-// `;
 
 export const Button = styled.button`
   display: flex;
@@ -113,20 +86,6 @@ export const CreateTweetBtn = styled.button`
     border: 1px solid #555;
   }
 `;
-
-// export const Footer = styled.footer`
-//   width: 100%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 20px 0;
-//   border-bottom: 1px solid var(--outline);
-// `;
-
-// export const FooterMsg = styled.p`
-//   font-weight: 800;
-//   color: #999;
-// `;
 
 export const NewTweetModal = styled.div`
   position: fixed;
@@ -194,7 +153,6 @@ export const Footer = styled.footer`
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-  /* border-bottom: 1px solid var(--outline); */
 `;
 
 export const FooterMsg = styled.p`
