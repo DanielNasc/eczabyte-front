@@ -170,6 +170,38 @@ export const ModaTextarea = styled.textarea`
   resize: none;
 `;
 
+export const AsideBar = styled.aside`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+  align-items: start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 30px;
+  border-right: 1px solid #1e1e1e;
+
+  .link-nav {
+    text-decoration: none;
+  }
+`;
+
+export const Footer = styled.footer`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--outline);
+`;
+
+export const FooterMsg = styled.p`
+  font-weight: 800;
+  color: #999;
+`;
+
 const iconCSS = css`
   width: 19px;
   height: 19px;

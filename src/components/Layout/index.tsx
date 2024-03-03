@@ -25,19 +25,24 @@ import {
 } from '../../pages/Home/styles';
 import Header from '../Header';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type LayoutType = {
   children: React.ReactNode;
   hasBackPage?: boolean;
   showHeader?: boolean;
+  showFooter?: boolean;
   headerTitle?: string;
+  backTo?: string;
 };
 
 function Layout({
   children,
   hasBackPage = true,
   showHeader = true,
+  showFooter = true,
   headerTitle = '',
+  backTo = '/',
 }: LayoutType) {
   const [addTweet, setAddTweet] = useState<boolean>(false);
 
@@ -73,11 +78,13 @@ function Layout({
         </NewTweetModal>
       )}
       <Container>
-        <AsideNav>
-          <Button>
-            <HomeAltIcon />
-            <p>Home</p>
-          </Button>
+        <AsideBar>
+          <Link className="link-nav" to="/">
+            <Button>
+              <HomeAltIcon />
+              <p>Home</p>
+            </Button>
+          </Link>
           {/* <Button>
             <HashIcon />
             <p>Explore</p>
@@ -94,23 +101,34 @@ function Layout({
             <BookmarkIcon />
             <p>Bookmarks</p>
           </Button> */}
-          <Button>
-            <PersonIcon />
-            <p>Profile</p>
-          </Button>
+          <Link className="link-nav" to="/profile">
+            <Button>
+              <PersonIcon />
+              <p>Profile</p>
+            </Button>
+          </Link>
           {/* <Button>
             <MoreHorizIcon />
             <p>More</p>
           </Button> */}
-          <Button>
-            <SettingsIcon />
-            <p>Settings</p>
-          </Button>
-          <CreateTweetBtn onClick={() => { setAddTweet(true); }}>Tweet</CreateTweetBtn>
-        </AsideNav>
+          <Link className="link-nav" to="/settings">
+            <Button>
+              <SettingsIcon />
+              <p>Settings</p>
+            </Button>
+          </Link>
+          <CreateTweetBtn
+            onClick={() => {
+              setAddTweet(true);
+            }}
+          >
+            Tweet
+          </CreateTweetBtn>
+        </AsideBar>
+
         <Wrapper>
           {showHeader && (
-            <Header hasBackPage={hasBackPage}>
+            <Header hasBackPage={hasBackPage} backTo={backTo}>
               {headerTitle ? (
                 <strong>{headerTitle}</strong>
               ) : (
@@ -122,18 +140,13 @@ function Layout({
             </Header>
           )}
           {children}
-          <Footer>
-            <FooterMsg>Develop By DLL-MGV</FooterMsg>
-          </Footer>
-            {/* <footer
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '20px 0',
-                borderBottom: '1px solid var(--outline)',
-              }} ></ footer> */}
+
+          {showFooter && (
+            <Footer>
+              <FooterMsg>Develop By DLL-MGV</FooterMsg>
+            </Footer>
+          )}
+
           <BottomMenu>
             <HomeIcon className="active" />
             <SearchIcon />
