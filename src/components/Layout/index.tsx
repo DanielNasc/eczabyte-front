@@ -31,12 +31,14 @@ type LayoutType = {
   hasBackPage?: boolean;
   showHeader?: boolean;
   headerTitle?: string;
+  showFooter?: boolean;
 };
 
 function Layout({
   children,
   hasBackPage = true,
   showHeader = true,
+  showFooter = true,
   headerTitle = '',
 }: LayoutType) {
   const [addTweet, setAddTweet] = useState<boolean>(false);
@@ -128,9 +130,11 @@ function Layout({
             </Header>
           )}
           {children}
-          <Footer>
-            <FooterMsg>Develop By DLL-MGV</FooterMsg>
-          </Footer>
+          {showFooter && (
+            <Footer>
+              <FooterMsg>Develop By DLL-MGV</FooterMsg>
+            </Footer>
+          )}
           <BottomMenu>
             <HomeIcon className="active" />
             <SearchIcon />
