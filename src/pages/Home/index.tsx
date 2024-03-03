@@ -1,7 +1,9 @@
 import Feed from '../../components/Feed';
 import Layout from '../../components/Layout';
-import Login from '../Login';
+import SelectionPopup from '../../components/SelectionPopup';
 import { LogoTypography } from './styles';
+import Register from '../Register';
+import Login from '../Login';
 
 const Home = () => {
   return (
@@ -33,7 +35,18 @@ const Home = () => {
         </div>
         <Feed />
       </Layout>
-      <Login />
+      <SelectionPopup 
+        items={[
+          {
+            label: 'Login',
+            component: Login
+          },
+          {
+            label: 'Register',
+            component: Register
+          }
+        ]} 
+      />
     </>
   );
 };

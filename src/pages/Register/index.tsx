@@ -14,9 +14,10 @@ type Props = {
   setPoppupVisible: (value: boolean) => void;
 }
 
-const Login: React.FC<Props> = ({ setPoppupVisible }) => {
+const Register: React.FC<Props> = ({ setPoppupVisible }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(true);
 
@@ -33,8 +34,8 @@ const Login: React.FC<Props> = ({ setPoppupVisible }) => {
       return;
     }
 
-    if (password === 'password') {
-      console.log('Senha correta. Autenticado com sucesso!');
+    if (password === confirmPassword) {
+      console.log('Registrado com sucesso!');
       setPoppupVisible(false);
     } else {
       setError('Senha incorreta. Tente novamente.');
@@ -77,6 +78,22 @@ const Login: React.FC<Props> = ({ setPoppupVisible }) => {
         </InputStyledContainer>
         <p style={{ color: 'red' }}>{error}</p>
       </>
+
+      <>
+        <InputStyledContainer>
+          <InputStyled
+            style={{ width: '100%' }}
+            placeholder="Password"
+            type={showPassword ? 'password' : 'text'}
+            value={password}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <InputIconContainer onClick={handleVisible}>
+            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+          </InputIconContainer>
+        </InputStyledContainer>
+        <p style={{ color: 'red' }}>{error}</p>
+      </>
       <ButtonStyled
         type="submit"
         style={{ marginTop: '50px' }}
@@ -86,4 +103,4 @@ const Login: React.FC<Props> = ({ setPoppupVisible }) => {
   );
 };
 
-export default Login;
+export default Register;

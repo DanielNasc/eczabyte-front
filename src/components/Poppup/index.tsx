@@ -9,15 +9,13 @@ import {
 } from './style';
 
 type Props = {
-  submit: React.FormEventHandler<HTMLFormElement>;
   children: ReactNode;
   poppupVisible: boolean;
   setPoppupVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const LoginPoppup = ({
+const Popup = ({
   children,
-  submit,
   poppupVisible,
   setPoppupVisible,
 }: Props) => {
@@ -33,7 +31,7 @@ const LoginPoppup = ({
           <LogoTypographSmall>Y</LogoTypographSmall>
           <CrossClosePoppup onClick={handleClose}>ⓧ</CrossClosePoppup>
         </ContainerPoppupHeader>
-        <ContainerPoppupInside onSubmit={submit}>
+        <ContainerPoppupInside>
           {children}
         </ContainerPoppupInside>
       </ContainerPoppup>
@@ -43,4 +41,4 @@ const LoginPoppup = ({
   );
 };
 
-export default LoginPoppup;
+export default Popup;

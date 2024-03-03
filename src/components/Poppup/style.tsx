@@ -14,7 +14,7 @@ export const ContainerPoppup = styled.div`
   border-radius: 15px;
 `;
 
-export const ContainerPoppupInside = styled.form`
+export const ContainerPoppupInside = styled.div`
   display: flex;
   flex-direction: column;
   margin: 50px;

@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-`
-
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 `;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+`
+
 
 export const Card = styled.div`
   background-color: #fff;
