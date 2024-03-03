@@ -6,14 +6,14 @@ import {
   PersonIcon,
   Wrapper,
   HomeAltIcon,
+  AsideNav,
+  SettingsIcon,
+  Footer,
+  FooterMsg,
   NewTweetModal,
   NewTweetForm,
   ModalTitle,
   ModaTextarea,
-  AsideBar,
-  Footer,
-  FooterMsg,
-  SettingsIcon,
 } from './styles';
 
 import {
@@ -73,7 +73,7 @@ function Layout({
         </NewTweetModal>
       )}
       <Container>
-        <AsideBar>
+        <AsideNav>
           <Button>
             <HomeAltIcon />
             <p>Home</p>
@@ -106,14 +106,8 @@ function Layout({
             <SettingsIcon />
             <p>Settings</p>
           </Button>
-          <CreateTweetBtn
-            onClick={() => {
-              setAddTweet(true);
-            }}
-          >
-            Tweet
-          </CreateTweetBtn>
-        </AsideBar>
+          <CreateTweetBtn onClick={() => { setAddTweet(true); }}>Tweet</CreateTweetBtn>
+        </AsideNav>
         <Wrapper>
           {showHeader && (
             <Header hasBackPage={hasBackPage}>
@@ -131,13 +125,24 @@ function Layout({
           <Footer>
             <FooterMsg>Develop By DLL-MGV</FooterMsg>
           </Footer>
+            {/* <footer
+              style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '20px 0',
+                borderBottom: '1px solid var(--outline)',
+              }} ></ footer> */}
           <BottomMenu>
             <HomeIcon className="active" />
             <SearchIcon />
             <BellIcon />
             <EmailIcon />
           </BottomMenu>
+          <div></div>
         </Wrapper>
+        <div></div>
       </Container>
       <GlobalStyles />
     </>
