@@ -1,20 +1,19 @@
 import GlobalStyles from '../../styles/GlobalStyles';
 import {
   CreateTweetBtn,
-  BellIcon,
   Button,
   Container,
   PersonIcon,
   Wrapper,
   HomeAltIcon,
+  AsideNav,
+  SettingsIcon,
+  Footer,
+  FooterMsg,
   NewTweetModal,
   NewTweetForm,
   ModalTitle,
   ModaTextarea,
-  AsideBar,
-  Footer,
-  FooterMsg,
-  SettingsIcon,
 } from './styles';
 
 import {
@@ -22,6 +21,7 @@ import {
   EmailIcon,
   HomeIcon,
   SearchIcon,
+  BellIcon,
 } from '../../pages/Home/styles';
 import Header from '../Header';
 import { useState } from 'react';
@@ -125,6 +125,7 @@ function Layout({
             Tweet
           </CreateTweetBtn>
         </AsideBar>
+
         <Wrapper>
           {showHeader && (
             <Header hasBackPage={hasBackPage} backTo={backTo}>
@@ -139,18 +140,22 @@ function Layout({
             </Header>
           )}
           {children}
+
           {showFooter && (
             <Footer>
               <FooterMsg>Develop By DLL-MGV</FooterMsg>
             </Footer>
           )}
+
           <BottomMenu>
             <HomeIcon className="active" />
             <SearchIcon />
             <BellIcon />
             <EmailIcon />
           </BottomMenu>
+          <div></div>
         </Wrapper>
+        <div></div>
       </Container>
       <GlobalStyles />
     </>
