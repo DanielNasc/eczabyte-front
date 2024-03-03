@@ -113,7 +113,7 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
           </Header>
           {children}
           <Footer>
-            <FooterMsg>Develop By DLL-MG</FooterMsg>
+            <FooterMsg>Develop By DLL-MGV</FooterMsg>
           </Footer>
           <BottomMenu>
             <HomeIcon className="active" />
