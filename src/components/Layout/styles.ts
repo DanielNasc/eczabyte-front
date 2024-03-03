@@ -7,8 +7,10 @@ import {
   HomeAlt,
   Person,
   Settings,
+  LogOut,
   Bell,
 } from '../../styles/Icons';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   background: var(--primary);
@@ -90,7 +92,7 @@ export const Button = styled.button`
   border: 1px solid transparent;
   &:hover {
     border: 1px solid #555;
-    background-color: black;
+    background-color: var(--primary);
     cursor: pointer;
   }
 `;
@@ -229,4 +231,10 @@ export const PersonIcon = styled(Person)`
 `;
 export const SettingsIcon = styled(Settings)`
   ${iconCSS}
+`;
+export const LogoutIcon = styled(LogOut)`
+  ${iconCSS}
+`;
+export const LinkCustom = styled(Link)`
+  text-decoration: none;
 `;

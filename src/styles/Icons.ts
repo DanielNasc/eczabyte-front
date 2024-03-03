@@ -15,4 +15,4 @@ export { HomeAlt } from '@styled-icons/boxicons-regular';
 export { Hash } from '@styled-icons/boxicons-regular';
 export { MessageSquare, Bookmark, Bell } from '@styled-icons/boxicons-regular';
 export { MoreHoriz } from '@styled-icons/material-outlined';
-export { Settings } from '@styled-icons/ionicons-outline';
+export { Settings, LogOut } from '@styled-icons/ionicons-outline';

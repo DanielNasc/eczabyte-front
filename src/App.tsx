@@ -1,14 +1,21 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-// import Profile from './pages/Profile';
-// import Settings from './pages/Settings';
+
+import Login from './pages/Login';
+import Profile from './pages/Profile';
 
 function App() {
   return (
-    <>
-      <Home />
-      {/* <Settings /> */}
-      {/* <Profile /> */}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<Home />} /> {/* TODO -> Page Not Found */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
