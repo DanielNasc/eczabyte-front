@@ -25,6 +25,7 @@ import {
 } from '../../pages/Home/styles';
 import Header from '../Header';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type LayoutType = {
   children: React.ReactNode;
@@ -76,10 +77,12 @@ function Layout({
       )}
       <Container>
         <AsideBar>
-          <Button>
-            <HomeAltIcon />
-            <p>Home</p>
-          </Button>
+          <Link className="link-nav" to="/">
+            <Button>
+              <HomeAltIcon />
+              <p>Home</p>
+            </Button>
+          </Link>
           {/* <Button>
             <HashIcon />
             <p>Explore</p>
@@ -96,18 +99,22 @@ function Layout({
             <BookmarkIcon />
             <p>Bookmarks</p>
           </Button> */}
-          <Button>
-            <PersonIcon />
-            <p>Profile</p>
-          </Button>
+          <Link className="link-nav" to="/profile">
+            <Button>
+              <PersonIcon />
+              <p>Profile</p>
+            </Button>
+          </Link>
           {/* <Button>
             <MoreHorizIcon />
             <p>More</p>
           </Button> */}
-          <Button>
-            <SettingsIcon />
-            <p>Settings</p>
-          </Button>
+          <Link className="link-nav" to="/settings">
+            <Button>
+              <SettingsIcon />
+              <p>Settings</p>
+            </Button>
+          </Link>
           <CreateTweetBtn
             onClick={() => {
               setAddTweet(true);

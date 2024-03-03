@@ -123,6 +123,10 @@ export const AsideBar = styled.aside`
   left: 0;
   padding: 0 30px;
   border-right: 1px solid #1e1e1e;
+
+  .link-nav {
+    text-decoration: none;
+  }
 `;
 
 export const Footer = styled.footer`
