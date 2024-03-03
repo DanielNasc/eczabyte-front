@@ -7,6 +7,8 @@ import {
   PersonIcon,
   Wrapper,
   HomeAltIcon,
+  LogoutIcon,
+  LinkCustom,
 } from './styles';
 
 import {
@@ -41,10 +43,12 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             borderRight: '1px solid #1e1e1e',
           }}
         >
-          <Button>
-            <HomeAltIcon />
-            <p>Home</p>
-          </Button>
+          <LinkCustom to="/">
+            <Button>
+              <HomeAltIcon />
+              <p>Home</p>
+            </Button>
+          </LinkCustom>
           {/* <Button>
             <HashIcon />
             <p>Explore</p>
@@ -61,10 +65,12 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             <BookmarkIcon />
             <p>Bookmarks</p>
           </Button> */}
-          <Button>
-            <PersonIcon />
-            <p>Profile</p>
-          </Button>
+          <LinkCustom to="/profile">
+            <Button>
+              <PersonIcon />
+              <p>Profile</p>
+            </Button>
+          </LinkCustom>
           {/* <Button>
             <MoreHorizIcon />
             <p>More</p>
@@ -73,6 +79,12 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
             <SettingsIcon />
             <p>Settings</p>
           </Button> */}
+          <LinkCustom to="/login">
+            <Button>
+              <LogoutIcon />
+              <p>Log Out</p>
+            </Button>
+          </LinkCustom>
           <CreateTweetBtn>Tweet</CreateTweetBtn>
         </aside>
         <Wrapper>
