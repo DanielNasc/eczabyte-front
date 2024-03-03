@@ -5,6 +5,7 @@ export const PageNotFound = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform: translateY(35vh);
   /* background-color: var(--primary);
   background-color: red;
   max-height: 100vh;
