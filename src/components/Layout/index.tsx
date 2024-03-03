@@ -1,7 +1,6 @@
 import GlobalStyles from '../../styles/GlobalStyles';
 import {
   CreateTweetBtn,
-  BellIcon,
   Button,
   Container,
   PersonIcon,
@@ -9,6 +8,14 @@ import {
   HomeAltIcon,
   LogoutIcon,
   LinkCustom,
+  AsideNav,
+  SettingsIcon,
+  Footer,
+  FooterMsg,
+  NewTweetModal,
+  NewTweetForm,
+  ModalTitle,
+  ModaTextarea,
 } from './styles';
 
 import {
@@ -16,39 +23,73 @@ import {
   EmailIcon,
   HomeIcon,
   SearchIcon,
+  BellIcon,
 } from '../../pages/Home/styles';
 import Header from '../Header';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type LayoutType = {
   children: React.ReactNode;
   hasBackPage?: boolean;
+  showHeader?: boolean;
+  showFooter?: boolean;
+  headerTitle?: string;
+  backTo?: string;
 };
 
-function Layout({ children, hasBackPage = true }: LayoutType) {
+function Layout({
+  children,
+  hasBackPage = true,
+  showHeader = true,
+  showFooter = true,
+  headerTitle = '',
+  backTo = '/',
+}: LayoutType) {
+  const [addTweet, setAddTweet] = useState<boolean>(false);
+
   return (
     <>
-      <Container>
-        <aside
-          style={{
-            display: 'flex',
-            height: '100%',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            rowGap: '10px',
-            alignItems: 'start',
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            padding: '0 30px',
-            borderRight: '1px solid #1e1e1e',
+      {addTweet && (
+        <NewTweetModal
+          onClick={() => {
+            setAddTweet(false);
           }}
         >
+
           <LinkCustom to="/">
+          <NewTweetForm
+            action="."
+            method="post"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ModalTitle>Novo Tweet</ModalTitle>
+            <ModaTextarea
+              rows={6}
+              cols={50}
+              id="tweet-message"
+              placeholder="Use sua imaginação..."
+            />
+            <CreateTweetBtn
+              style={{
+                margin: 0,
+                maxWidth: '140px',
+              }}
+            >
+              Criar
+            </CreateTweetBtn>
+          </NewTweetForm>
+        </NewTweetModal>
+      )}
+      <Container>
+        <AsideBar>
+          <Link className="link-nav" to="/">
             <Button>
               <HomeAltIcon />
               <p>Home</p>
             </Button>
           </LinkCustom>
+          </Link>
           {/* <Button>
             <HashIcon />
             <p>Explore</p>
@@ -71,6 +112,7 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
               <p>Profile</p>
             </Button>
           </LinkCustom>
+          </Link>
           {/* <Button>
             <MoreHorizIcon />
             <p>More</p>
@@ -101,19 +143,51 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
               alignItems: 'center',
               padding: '20px 0',
               borderBottom: '1px solid var(--outline)',
+          <Link className="link-nav" to="/settings">
+            <Button>
+              <SettingsIcon />
+              <p>Settings</p>
+            </Button>
+          </Link>
+          <CreateTweetBtn
+            onClick={() => {
+              setAddTweet(true);
             }}
           >
-            <p style={{ fontWeight: '800', color: '#999' }}>
-              Develop By DLL-MG
-            </p>
-          </footer>
+            Tweet
+          </CreateTweetBtn>
+        </AsideBar>
+
+        <Wrapper>
+          {showHeader && (
+            <Header hasBackPage={hasBackPage} backTo={backTo}>
+              {headerTitle ? (
+                <strong>{headerTitle}</strong>
+              ) : (
+                <>
+                  <strong>Eczabyte ユーザー 👤</strong>
+                  <span>666 Tweets</span>
+                </>
+              )}
+            </Header>
+          )}
+          {children}
+
+          {showFooter && (
+            <Footer>
+              <FooterMsg>Develop By DLL-MGV</FooterMsg>
+            </Footer>
+          )}
+
           <BottomMenu>
             <HomeIcon className="active" />
             <SearchIcon />
             <BellIcon />
             <EmailIcon />
           </BottomMenu>
+          <div></div>
         </Wrapper>
+        <div></div>
       </Container>
       <GlobalStyles />
     </>
