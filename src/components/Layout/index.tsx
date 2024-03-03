@@ -14,6 +14,7 @@ import {
   AsideBar,
   Footer,
   FooterMsg,
+  SettingsIcon,
 } from './styles';
 
 import {
@@ -29,12 +30,14 @@ type LayoutType = {
   children: React.ReactNode;
   hasBackPage?: boolean;
   showHeader?: boolean;
+  headerTitle?: string;
 };
 
 function Layout({
   children,
   hasBackPage = true,
   showHeader = true,
+  headerTitle = '',
 }: LayoutType) {
   const [addTweet, setAddTweet] = useState<boolean>(false);
 
@@ -99,10 +102,10 @@ function Layout({
             <MoreHorizIcon />
             <p>More</p>
           </Button> */}
-          {/* <Button>
+          <Button>
             <SettingsIcon />
             <p>Settings</p>
-          </Button> */}
+          </Button>
           <CreateTweetBtn
             onClick={() => {
               setAddTweet(true);
@@ -114,8 +117,14 @@ function Layout({
         <Wrapper>
           {showHeader && (
             <Header hasBackPage={hasBackPage}>
-              <strong>Eczabyte ユーザー 👤</strong>
-              <span>666 Tweets</span>
+              {headerTitle ? (
+                <strong>{headerTitle}</strong>
+              ) : (
+                <>
+                  <strong>Eczabyte ユーザー 👤</strong>
+                  <span>666 Tweets</span>
+                </>
+              )}
             </Header>
           )}
           {children}

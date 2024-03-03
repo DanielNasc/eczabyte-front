@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
 export const SettingsContainer = styled.div`
-  margin: 80px 0;
-
-  .title {
-    margin-bottom: 8px;
-  }
+  margin: 50px 0;
 
   .user-data {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
 `;
 

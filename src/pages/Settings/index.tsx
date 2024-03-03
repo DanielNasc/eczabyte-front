@@ -22,12 +22,10 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <Layout showHeader={false}>
+    <Layout showHeader headerTitle="Settings">
       <SettingsContainer>
-        <h1 className="title">Configurações</h1>
         <div className="user-data">
-          <strong>Eczabyte ユーザー 👤</strong>
-          <span>@eczabyte</span>
+          <h2>User</h2>
         </div>
         <SettingsForm onSubmit={handleSubmit}>
           <SettingsInput
