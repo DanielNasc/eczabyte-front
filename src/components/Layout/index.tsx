@@ -31,8 +31,9 @@ type LayoutType = {
   children: React.ReactNode;
   hasBackPage?: boolean;
   showHeader?: boolean;
-  headerTitle?: string;
   showFooter?: boolean;
+  headerTitle?: string;
+  backTo?: string;
 };
 
 function Layout({
@@ -41,6 +42,7 @@ function Layout({
   showHeader = true,
   showFooter = true,
   headerTitle = '',
+  backTo = '/',
 }: LayoutType) {
   const [addTweet, setAddTweet] = useState<boolean>(false);
 
@@ -125,7 +127,7 @@ function Layout({
         </AsideBar>
         <Wrapper>
           {showHeader && (
-            <Header hasBackPage={hasBackPage}>
+            <Header hasBackPage={hasBackPage} backTo={backTo}>
               {headerTitle ? (
                 <strong>{headerTitle}</strong>
               ) : (
