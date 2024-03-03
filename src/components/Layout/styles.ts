@@ -7,10 +7,8 @@ import {
   HomeAlt,
   Person,
   Settings,
-  LogOut,
   Bell,
 } from '../../styles/Icons';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   background: var(--primary);
@@ -92,7 +90,7 @@ export const Button = styled.button`
   border: 1px solid transparent;
   &:hover {
     border: 1px solid #555;
-    background-color: var(--primary);
+    background-color: black;
     cursor: pointer;
   }
 `;
@@ -116,19 +114,19 @@ export const CreateTweetBtn = styled.button`
   }
 `;
 
-export const Footer = styled.footer`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--outline);
-`;
+// export const Footer = styled.footer`
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 20px 0;
+//   border-bottom: 1px solid var(--outline);
+// `;
 
-export const FooterMsg = styled.p`
-  font-weight: 800;
-  color: #999;
-`;
+// export const FooterMsg = styled.p`
+//   font-weight: 800;
+//   color: #999;
+// `;
 
 export const NewTweetModal = styled.div`
   position: fixed;
@@ -231,10 +229,4 @@ export const PersonIcon = styled(Person)`
 `;
 export const SettingsIcon = styled(Settings)`
   ${iconCSS}
-`;
-export const LogoutIcon = styled(LogOut)`
-  ${iconCSS}
-`;
-export const LinkCustom = styled(Link)`
-  text-decoration: none;
 `;

@@ -6,9 +6,6 @@ import {
   PersonIcon,
   Wrapper,
   HomeAltIcon,
-  LogoutIcon,
-  LinkCustom,
-  AsideNav,
   SettingsIcon,
   Footer,
   FooterMsg,
@@ -16,6 +13,7 @@ import {
   NewTweetForm,
   ModalTitle,
   ModaTextarea,
+  AsideBar,
 } from './styles';
 
 import {
@@ -56,8 +54,6 @@ function Layout({
             setAddTweet(false);
           }}
         >
-
-          <LinkCustom to="/">
           <NewTweetForm
             action="."
             method="post"
@@ -88,7 +84,6 @@ function Layout({
               <HomeAltIcon />
               <p>Home</p>
             </Button>
-          </LinkCustom>
           </Link>
           {/* <Button>
             <HashIcon />
@@ -106,43 +101,16 @@ function Layout({
             <BookmarkIcon />
             <p>Bookmarks</p>
           </Button> */}
-          <LinkCustom to="/profile">
+          <Link className="link-nav" to="/profile">
             <Button>
               <PersonIcon />
               <p>Profile</p>
             </Button>
-          </LinkCustom>
           </Link>
           {/* <Button>
             <MoreHorizIcon />
             <p>More</p>
           </Button> */}
-          {/* <Button>
-            <SettingsIcon />
-            <p>Settings</p>
-          </Button> */}
-          <LinkCustom to="/login">
-            <Button>
-              <LogoutIcon />
-              <p>Log Out</p>
-            </Button>
-          </LinkCustom>
-          <CreateTweetBtn>Tweet</CreateTweetBtn>
-        </aside>
-        <Wrapper>
-          <Header hasBackPage={hasBackPage}>
-            <strong>Eczabyte ユーザー 👤</strong>
-            <span>666 Tweets</span>
-          </Header>
-          {children}
-          <footer
-            style={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '20px 0',
-              borderBottom: '1px solid var(--outline)',
           <Link className="link-nav" to="/settings">
             <Button>
               <SettingsIcon />
