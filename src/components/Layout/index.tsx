@@ -28,9 +28,14 @@ import { useState } from 'react';
 type LayoutType = {
   children: React.ReactNode;
   hasBackPage?: boolean;
+  showHeader?: boolean;
 };
 
-function Layout({ children, hasBackPage = true }: LayoutType) {
+function Layout({
+  children,
+  hasBackPage = true,
+  showHeader = true,
+}: LayoutType) {
   const [addTweet, setAddTweet] = useState<boolean>(false);
 
   return (
@@ -107,10 +112,12 @@ function Layout({ children, hasBackPage = true }: LayoutType) {
           </CreateTweetBtn>
         </AsideBar>
         <Wrapper>
-          <Header hasBackPage={hasBackPage}>
-            <strong>Eczabyte ユーザー 👤</strong>
-            <span>666 Tweets</span>
-          </Header>
+          {showHeader && (
+            <Header hasBackPage={hasBackPage}>
+              <strong>Eczabyte ユーザー 👤</strong>
+              <span>666 Tweets</span>
+            </Header>
+          )}
           {children}
           <Footer>
             <FooterMsg>Develop By DLL-MGV</FooterMsg>
