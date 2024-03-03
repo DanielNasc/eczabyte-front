@@ -3,11 +3,11 @@ import {
   MoreHoriz,
   MessageSquare,
   Bookmark,
-  Bell,
   Hash,
   HomeAlt,
   Person,
   Settings,
+  Bell,
 } from '../../styles/Icons';
 
 export const Container = styled.div`

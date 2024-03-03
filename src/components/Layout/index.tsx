@@ -1,7 +1,6 @@
 import GlobalStyles from '../../styles/GlobalStyles';
 import {
   CreateTweetBtn,
-  BellIcon,
   Button,
   Container,
   PersonIcon,
@@ -22,6 +21,7 @@ import {
   EmailIcon,
   HomeIcon,
   SearchIcon,
+  BellIcon,
 } from '../../pages/Home/styles';
 import Header from '../Header';
 import { useState } from 'react';
