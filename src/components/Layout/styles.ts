@@ -9,6 +9,7 @@ import {
   Settings,
   Bell,
 } from '../../styles/Icons';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   background: var(--primary);
@@ -20,6 +21,10 @@ export const IconText = styled.p`
     display: none;
   }
 `;
+
+export const AsideLink = styled(Link)`
+  text-decoration: none;
+`
 
 export const AsideBar = styled.aside`
   display: flex;

@@ -15,6 +15,7 @@ import {
   ModaTextarea,
   AsideBar,
   IconText,
+  AsideLink,
 } from './styles';
 
 import {
@@ -26,7 +27,6 @@ import {
 } from '../../pages/Home/styles';
 import Header from '../Header';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -83,24 +83,24 @@ function Layout({
       )}
       <Container>
         <AsideBar>
-          <Link className="link-nav" to="/">
+          <AsideLink className="link-nav" to="/">
             <Button>
               <HomeAltIcon />
               <IconText>Home</IconText>
             </Button>
-          </Link>
-          <Link className="link-nav" to="/profile">
+          </AsideLink>
+          <AsideLink className="link-nav" to="/profile">
             <Button>
               <PersonIcon />
               <IconText>IconTextrofile</IconText>
             </Button>
-          </Link>
-          <Link className="link-nav" to="/settings">
+          </AsideLink>
+          <AsideLink className="link-nav" to="/settings">
             <Button>
               <SettingsIcon />
               <IconText>Settings</IconText>
             </Button>
-          </Link>
+          </AsideLink>
           <CreateTweetBtn
             onClick={() => {
               setAddTweet(true);
