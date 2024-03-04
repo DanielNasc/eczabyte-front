@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tweets } from './styles';
 import Tweet from '../Tweet';
+import { AuthContext } from '../../contexts/AuthContext';
 
 interface Tweet {
   id: number;
@@ -16,16 +17,20 @@ interface Tweet {
 const Feed: React.FC = () => {
   const [myTweets, setMyTweets] = useState<Tweet[]>([]);
 
+  const { user } = useContext(AuthContext);
+
   useEffect(() => {
-    fetch('http://localhost:3000/tweets')
-      .then((response) => response.json())
-      .then((data) => setMyTweets(data));
-  })
+    if (user.length > 0) {
+      fetch(`http://localhost:3000/tweets`)
+        .then((response) => response.json())
+        .then((data) => setMyTweets(data));
+    }
+  }, [user]);
 
   return (
     <Tweets>
       {
-        myTweets.length > 0 ? myTweets.map((tweet) => (
+        myTweets.length > 0 && myTweets.map((tweet) => (
           <Tweet
             id={tweet.id}
             key={tweet.id}
@@ -37,7 +42,7 @@ const Feed: React.FC = () => {
             date={tweet.date}
             comments={tweet.comments}
           />
-        )) : <p>Loading...</p>
+        ))
       }
     </Tweets>
   );
