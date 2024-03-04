@@ -14,6 +14,7 @@ import {
   ModalTitle,
   ModaTextarea,
   AsideBar,
+  IconText,
 } from './styles';
 
 import {
@@ -26,6 +27,9 @@ import {
 import Header from '../Header';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 type LayoutType = {
   children: React.ReactNode;
@@ -82,19 +86,19 @@ function Layout({
           <Link className="link-nav" to="/">
             <Button>
               <HomeAltIcon />
-              <p>Home</p>
+              <IconText>Home</IconText>
             </Button>
           </Link>
           <Link className="link-nav" to="/profile">
             <Button>
               <PersonIcon />
-              <p>Profile</p>
+              <IconText>IconTextrofile</IconText>
             </Button>
           </Link>
           <Link className="link-nav" to="/settings">
             <Button>
               <SettingsIcon />
-              <p>Settings</p>
+              <IconText>Settings</IconText>
             </Button>
           </Link>
           <CreateTweetBtn
@@ -102,7 +106,8 @@ function Layout({
               setAddTweet(true);
             }}
           >
-            Tweet
+            <IconText>Tweet</IconText>
+            <FontAwesomeIcon icon={faPenToSquare} />
           </CreateTweetBtn>
         </AsideBar>
 
@@ -133,7 +138,7 @@ function Layout({
             <BellIcon />
             <EmailIcon />
           </BottomMenu>
-          <div></div>
+          <div className="hidden" />
         </Wrapper>
       </Container>
       <GlobalStyles />

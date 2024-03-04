@@ -15,6 +15,34 @@ export const Container = styled.div`
   position: relative;
 `;
 
+export const IconText = styled.p`
+  @media (max-width: 980px) {
+    display: none;
+  }
+`;
+
+export const AsideBar = styled.aside`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+  align-items: start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 30px;
+  border-right: 1px solid #1e1e1e;
+
+  @media (max-width: 980px) {
+    width: 100px;
+  }
+
+  @media (max-width: 830px) {
+    display: none;
+  }
+`;
+
 export const Wrapper = styled.div`
   height: 100%;
   margin: 0 auto;
@@ -24,29 +52,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-export const AsideNav = styled.aside`
-  display: none;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  row-gap: 10px;
-  align-items: start;
-  position: sticky;
-  max-height: 100vh;
-  top: 0;
-  left: 0;
-  width: 220px;
-  padding: 0 20px;
-  border-right: 1px solid #1e1e1e;
-
-  @media (min-width: 680px) {
-    display: flex;
-  }
-  @media (min-width: 1080px) {
-    width: 280px;
-  }
 `;
 
 export const Button = styled.button`
@@ -80,10 +85,17 @@ export const CreateTweetBtn = styled.button`
   border-radius: 25px;
   transition-duration: 500ms;
   border: 1px solid transparent;
+  column-gap: 8px;
   &:hover {
     background-color: black;
     cursor: pointer;
     border: 1px solid #555;
+  }
+
+  @media (max-width: 980px) {
+    padding: 0;
+    justify-content: end;
+    background-color: inherit;
   }
 `;
 
@@ -127,24 +139,6 @@ export const ModaTextarea = styled.textarea`
   border-radius: 3px;
   font-size: 0.7em;
   resize: none;
-`;
-
-export const AsideBar = styled.aside`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  row-gap: 10px;
-  align-items: start;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 0 30px;
-  border-right: 1px solid #1e1e1e;
-
-  .link-nav {
-    text-decoration: none;
-  }
 `;
 
 export const Footer = styled.footer`
