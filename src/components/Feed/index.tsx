@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tweets } from './styles';
 import Tweet from '../Tweet';
-import { AuthContext } from '../../contexts/AuthContext';
 
 interface Tweet {
   id: number;
@@ -17,15 +16,11 @@ interface Tweet {
 const Feed: React.FC = () => {
   const [myTweets, setMyTweets] = useState<Tweet[]>([]);
 
-  const { user } = useContext(AuthContext);
-
   useEffect(() => {
-    if (user.length > 0) {
-      fetch(`http://localhost:3000/tweets`)
-        .then((response) => response.json())
-        .then((data) => setMyTweets(data));
-    }
-  }, [user]);
+    fetch(`http://localhost:3000/tweets`)
+      .then((response) => response.json())
+      .then((data) => setMyTweets(data));
+  }, []);
 
   return (
     <Tweets>
