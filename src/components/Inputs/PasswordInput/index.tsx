@@ -19,7 +19,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({ error, setPassword
             <InputStyled
               style={{ width: '100%' }}
               placeholder={ placeholder ? placeholder : "Digite sua senha"}
-              type={showPassword ? 'password' : 'text'}
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
