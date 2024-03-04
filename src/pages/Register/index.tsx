@@ -3,13 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
   ButtonStyled,
   Form,
-  InputIconContainer,
   InputStyled,
-  InputStyledContainer,
 } from './styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../contexts/AuthContext';
+import { PasswordInput } from '../../components/Inputs/PasswordInput';
 
 type Props = {
   setPoppupVisible: (value: boolean) => void;
@@ -20,7 +17,6 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [showPassword, setShowPassword] = useState(true);
 
   const { setUser, user } = useContext(AuthContext);
 
@@ -29,11 +25,6 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
       setPoppupVisible(false);
     }
   }, [user, setPoppupVisible]);
-
-  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-    setError('');
-  };
 
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
@@ -57,12 +48,6 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
     }
   };
 
-  function handleVisible() {
-    setShowPassword((value) => {
-      return !value;
-    });
-  }
-
   return (
     <Form onSubmit={handleSubmit}>
      <div>
@@ -79,37 +64,18 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
             }
           }}
         />
-        <div>
-          <InputStyledContainer>
-            <InputStyled
-              style={{ width: '100%' }}
-              placeholder="Password"
-              type={showPassword ? 'password' : 'text'}
-              value={password}
-              onChange={handleChangePassword}
-            />
-            <InputIconContainer onClick={handleVisible}>
-              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-            </InputIconContainer>
-          </InputStyledContainer>
-          <p style={{ color: 'red' }}>{error}</p>
-        </div>
+       
+       <PasswordInput
+          password={password}
+          setPassword={setPassword}
+          error={error} />
 
-        <div>
-          <InputStyledContainer>
-            <InputStyled
-              style={{ width: '100%' }}
-              placeholder="Password"
-              type={showPassword ? 'password' : 'text'}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <InputIconContainer onClick={handleVisible}>
-              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-            </InputIconContainer>
-          </InputStyledContainer>
-          <p style={{ color: 'red' }}>{error}</p>
-        </div>
+        <PasswordInput
+          password={confirmPassword}
+          setPassword={setConfirmPassword}
+          error={error} 
+          placeholder="Confirme sua senha"
+          />
      </div>
 
       <ButtonStyled
