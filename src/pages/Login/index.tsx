@@ -34,7 +34,7 @@ const Login: React.FC<Props> = ({ setPoppupVisible }) => {
     }
 
     if (password === 'password') {
-      console.log('Senha correta. Autenticado com sucesso!');
+      alert('Senha correta. Autenticado com sucesso!');
       setPoppupVisible(false);
     } else {
       setError('Senha incorreta. Tente novamente.');
@@ -49,34 +49,37 @@ const Login: React.FC<Props> = ({ setPoppupVisible }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <InputStyled
-        placeholder="Email"
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        onBlur={() => {
-          const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          if (!emailRegex.test(email)) {
-            setError('Email inválido. Tente novamente.');
-          } else {
-            setError('');
-          }
-        }}
-      />
-      <>
-        <InputStyledContainer>
-          <InputStyled
-            style={{ width: '100%' }}
-            placeholder="Password"
-            type={showPassword ? 'password' : 'text'}
-            value={password}
-            onChange={handleChangePassword}
-          />
-          <InputIconContainer onClick={handleVisible}>
-            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-          </InputIconContainer>
-        </InputStyledContainer>
-        <p style={{ color: 'red' }}>{error}</p>
-      </>
+      <div>
+        <InputStyled
+          placeholder="Email"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          onBlur={() => {
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+              setError('Email inválido. Tente novamente.');
+            } else {
+              setError('');
+            }
+          }}
+        />
+        <div>
+          <InputStyledContainer>
+            <InputStyled
+              style={{ width: '100%' }}
+              placeholder="Password"
+              type={showPassword ? 'password' : 'text'}
+              value={password}
+              onChange={handleChangePassword}
+            />
+            <InputIconContainer onClick={handleVisible}>
+              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+            </InputIconContainer>
+          </InputStyledContainer>
+          <p style={{ color: 'red' }}>{error}</p>
+        </div>
+      </div>
+
       <ButtonStyled
         type="submit"
         style={{ marginTop: '50px' }}

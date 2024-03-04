@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
+
+  height: 100%;
   margin: 50px;
 `
 

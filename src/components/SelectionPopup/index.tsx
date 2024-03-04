@@ -4,21 +4,12 @@
 import { useState } from "react";
 import Popup from "../Poppup";
 import { TabContent, TabsSelectButton, TabsSelectContainer } from "./styles";
+import Login from "../../pages/Login";
+import Register from "../../pages/Register";
 
-type Props = {
-    setPoppupVisible: (value: boolean) => void;
-  }
-
-type SelectionPopupProps = {
-    items: { label: string, component: React.FC<Props> }[]
-}
-
-const SelectionPopup: React.FC<SelectionPopupProps> = ({ items }) => {
+const SelectionPopup: React.FC = () => {
     const [selected, setSelected] = useState(0);
     const [visiblePoppup, setVisiblePoppup] = useState(true);
-    
-    console.log('selected:: ', selected);
-    console.log(items);
 
     return (
         <Popup
@@ -26,15 +17,21 @@ const SelectionPopup: React.FC<SelectionPopupProps> = ({ items }) => {
             poppupVisible={visiblePoppup}
         >
             <TabsSelectContainer>
-                {items.map((item, index) => (
-                    <TabsSelectButton
-                        key={index}
-                        selected={index === selected} 
-                        onClick={() => setSelected(index)}>{item.label}</TabsSelectButton>
-                ))}
+                <TabsSelectButton
+                    selected={selected == 0} 
+                    onClick={() => setSelected(0)}>Login
+                </TabsSelectButton>
+                <TabsSelectButton
+                    selected={selected == 1} 
+                    onClick={() => setSelected(1)}>Register
+                </TabsSelectButton>
             </TabsSelectContainer>
             <TabContent>
-                {items[selected].component({ setPoppupVisible: setVisiblePoppup })}
+                {
+                    selected === 0 ?
+                        <Login setPoppupVisible={setVisiblePoppup} /> :
+                        <Register setPoppupVisible={setVisiblePoppup} />
+                }
             </TabContent>
         </Popup>
     )

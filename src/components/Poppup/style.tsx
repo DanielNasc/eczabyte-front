@@ -12,6 +12,8 @@ export const ContainerPoppup = styled.div`
   padding: 20px;
   background: #190b28;
   border-radius: 15px;
+
+  height: 600px;
 `;
 
 export const ContainerPoppupInside = styled.div`
