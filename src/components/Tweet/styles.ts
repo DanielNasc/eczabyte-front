@@ -177,3 +177,19 @@ export const Status = styled.a`
     }
   }
 `;
+
+export const TweetContainer = styled.div`
+  padding: 30px 0px;
+  border: 1px solid #1e1e1e;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+
+  .tweet-img {
+    display: flex;
+    width: 49px;
+    height: 49px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+`;
