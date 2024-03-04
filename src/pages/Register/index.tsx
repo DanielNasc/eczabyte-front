@@ -3,10 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
   ButtonStyled,
   Form,
-  InputStyled,
 } from './styles';
 import { AuthContext } from '../../contexts/AuthContext';
 import { PasswordInput } from '../../components/Inputs/PasswordInput';
+import { InputStyled } from '../../components/Inputs/styles';
 
 type Props = {
   setPoppupVisible: (value: boolean) => void;

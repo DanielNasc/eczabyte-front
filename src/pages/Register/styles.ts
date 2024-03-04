@@ -14,7 +14,6 @@ export const Form = styled.form`
   margin: 50px;
 `
 
-
 export const Card = styled.div`
   background-color: #fff;
   border-radius: 10px;
@@ -48,16 +47,6 @@ export const Button = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-`;
-
-export const InputStyled = styled.input`
-  padding: 15px;
-  color: whitesmoke;
-  margin-bottom: 20px;
-  background-color: transparent;
-  border: 1px solid grey;
-  border-radius: 5px;
-  font-size: 20px;
 `;
 
 export const ButtonStyled = styled.input`
