@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import {
   ButtonStyled,
@@ -9,6 +9,7 @@ import {
 } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { AuthContext } from '../../contexts/AuthContext';
 
 type Props = {
   setPoppupVisible: (value: boolean) => void;
@@ -20,6 +21,14 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(true);
+
+  const { setUser, user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user) {
+      setPoppupVisible(false);
+    }
+  }, [user, setPoppupVisible]);
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -41,6 +50,7 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
 
     if (password === confirmPassword) {
       alert('Registrado com sucesso!');
+      setUser(email);
       setPoppupVisible(false);
     } else {
       setError('Senha incorreta. Tente novamente.');
