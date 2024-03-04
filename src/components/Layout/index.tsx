@@ -71,6 +71,7 @@ function Layout({
               placeholder="Use sua imaginação..."
             />
             <CreateTweetBtn
+              onClick={() => setAddTweet(false)}
               style={{
                 margin: 0,
                 maxWidth: '140px',
