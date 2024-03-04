@@ -119,7 +119,7 @@ function Layout({
               ) : (
                 <>
                   <strong>Eczabyte ユーザー 👤</strong>
-                  <span>666 Tweets</span>
+                  <span>150 Tweets</span>
                 </>
               )}
             </Header>

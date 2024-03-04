@@ -6,6 +6,9 @@ type TabsSelectButtonProps = {
 
 export const TabsSelectContainer = styled.div`
     display: flex;
+    align-items: center;
+    width: 100%;
+    
     gap: 2rem;
 `
 
