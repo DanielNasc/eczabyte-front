@@ -20,6 +20,7 @@
     "@styled-icons/ionicons-outline": "^10.46.0",
     "@styled-icons/material": "^10.47.0",
     "@styled-icons/material-outlined": "^10.47.0",
+    "axios": "^1.6.8",
     "boxicons": "^2.1.4",
     "json-server": "^1.0.0-alpha.23",
     "react": "^18.2.0",

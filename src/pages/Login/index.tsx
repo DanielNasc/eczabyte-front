@@ -1,23 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import {
-  ButtonStyled,
-  Form,
-} from './styles';
+import { ButtonStyled, Form } from './styles';
 import { AuthContext } from '../../contexts/AuthContext';
 import { PasswordInput } from '../../components/Inputs/PasswordInput';
 import { InputStyled } from '../../components/Inputs/styles';
+import AuthService from '../../Services/authService';
 
 type Props = {
   setPoppupVisible: (value: boolean) => void;
-}
+};
 
 const Login: React.FC<Props> = ({ setPoppupVisible }) => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const { setUser, user } = useContext(AuthContext);
+
+  useEffect(() => {
+    async function checkToken() {
+      const res = await AuthService.checkToken();
+      if (!res.message) {
+        return false;
+      }
+      setUser(username);
+      setPoppupVisible(false);
+    }
+
+    checkToken();
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -25,42 +36,31 @@ const Login: React.FC<Props> = ({ setPoppupVisible }) => {
     }
   }, [user, setPoppupVisible]);
 
-
-  const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
 
-    if (!password) {
-      setError('Por favor, insira a senha.');
-      return;
-    }
-
-    if (password === 'password') {
-      alert('Senha correta. Autenticado com sucesso!');
-      setUser(email);
+    try {
+      await AuthService.login(username, password);
+      setUser(username);
       setPoppupVisible(false);
-    } else {
-      setError('Senha incorreta. Tente novamente.');
+    } catch (error) {
+      setError('Usuário ou senha incorretos. Tente novamente.');
     }
   };
-
 
   return (
     <Form onSubmit={handleSubmit}>
       <InputStyled
-        placeholder="Email"
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        onBlur={() => {
-          const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          if (!emailRegex.test(email)) {
-            setError('Email inválido. Tente novamente.');
-          } else {
-            setError('');
-          }
-        }}
+        placeholder="Username"
+        type="text"
+        onChange={(e) => setUsername(e.target.value)}
       />
 
-      <PasswordInput error={error} setPassword={setPassword} password={password} />
+      <PasswordInput
+        error={error}
+        setPassword={setPassword}
+        password={password}
+      />
 
       <ButtonStyled
         type="submit"
