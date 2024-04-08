@@ -19,15 +19,20 @@ const Login: React.FC<Props> = ({ setPoppupVisible }) => {
 
   useEffect(() => {
     async function checkToken() {
-      const res = await AuthService.checkToken();
-      if (!res.message) {
-        return false;
+      try {
+        const res = await AuthService.checkToken();
+        if (!res.message) {
+          return false;
+        }
+        setUser(username);
+        setPoppupVisible(false);
+      } catch (err) {
+        /* empty */
       }
-      setUser(username);
-      setPoppupVisible(false);
     }
 
     checkToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

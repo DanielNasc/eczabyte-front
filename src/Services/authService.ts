@@ -6,11 +6,32 @@ interface LoginResponse {
   token: string;
 }
 
+interface CreateUserResponse {
+  username: string;
+  email: string;
+  password: string;
+}
+
 interface TokenCheckResponse {
   message: string;
 }
 
 const AuthService = {
+  createUser: async (
+    username: string,
+    password: string,
+    email: string
+  ): Promise<CreateUserResponse> => {
+    try {
+      const response: AxiosResponse<CreateUserResponse> = await axios.post(
+        `${API_URL}/api/v1/users`,
+        { username, email, password }
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error('O usuário/email já existem.');
+    }
+  },
   login: async (username: string, password: string): Promise<LoginResponse> => {
     try {
       const response: AxiosResponse<LoginResponse> = await axios.post(

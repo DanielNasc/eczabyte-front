@@ -1,23 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import {
-  ButtonStyled,
-  Form,
-} from './styles';
+import { ButtonStyled, Form } from './styles';
 import { AuthContext } from '../../contexts/AuthContext';
 import { PasswordInput } from '../../components/Inputs/PasswordInput';
 import { InputStyled } from '../../components/Inputs/styles';
+import AuthService from '../../Services/authService';
 
 type Props = {
   setPoppupVisible: (value: boolean) => void;
-}
+};
 
 const Register: React.FC<Props> = ({ setPoppupVisible }) => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
 
+  const [usernameError, setUsernameError] = useState('');
+  const [error, setError] = useState('');
   const { setUser, user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -26,8 +26,12 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
     }
   }, [user, setPoppupVisible]);
 
-  const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
+
+    if (!username) {
+      setUsernameError('Por favor, insira um username.');
+    }
 
     if (!password) {
       setError('Por favor, insira a senha.');
@@ -39,19 +43,25 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
       return;
     }
 
-    if (password === confirmPassword) {
-      alert('Registrado com sucesso!');
-      setUser(email);
-      setPoppupVisible(false);
-    } else {
+    if (password !== confirmPassword) {
       setError('Senha incorreta. Tente novamente.');
+      return;
+    }
+
+    try {
+      await AuthService.createUser(username, password, email);
+      setUser(username);
+      setPoppupVisible(false);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      setUsernameError(err.message);
     }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-     <div>
-      <InputStyled
+      <div>
+        <InputStyled
           placeholder="Email"
           type="email"
           onChange={(e) => setEmail(e.target.value)}
@@ -64,19 +74,27 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
             }
           }}
         />
-       
-       <PasswordInput
+
+        <InputStyled
+          placeholder="Username"
+          type="text"
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <p style={{ color: 'red' }}>{usernameError}</p>
+
+        <PasswordInput
           password={password}
           setPassword={setPassword}
-          error={error} />
+          error={error}
+        />
 
         <PasswordInput
           password={confirmPassword}
           setPassword={setConfirmPassword}
-          error={error} 
+          error={error}
           placeholder="Confirme sua senha"
-          />
-     </div>
+        />
+      </div>
 
       <ButtonStyled
         type="submit"

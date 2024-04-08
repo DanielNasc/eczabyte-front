@@ -13,7 +13,7 @@ export const ContainerPoppup = styled.div`
   background: #190b28;
   border-radius: 15px;
 
-  height: 600px;
+  height: 100%;
 `;
 
 export const ContainerPoppupInside = styled.div`
