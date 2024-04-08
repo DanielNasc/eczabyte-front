@@ -29,7 +29,7 @@ class UserAuthService {
 
     try {
       const response: AxiosResponse<UpdateUserResponse> = await axios.put(
-        `${API_URL}/api/users/${userData.id}`,
+        `${API_URL}/api/v1/users/${userData.id}`,
         userData,
         {
           headers: {
@@ -37,9 +37,18 @@ class UserAuthService {
           },
         }
       );
+
+      if (response.status < 200 || response.status >= 300) {
+        throw new Error('Failed to update user data!');
+      }
+
       return response.data;
-    } catch (error) {
-      throw new Error('Failed to update user data!');
+    } catch (error: any) { // Especificando 'any' para o tipo de 'error'
+      if (error.response && error.response.data && error.response.data.message) {
+        throw new Error(error.response.data.message);
+      } else {
+        throw new Error('Failed to update user data!');
+      }
     }
   }
 
@@ -58,11 +67,21 @@ class UserAuthService {
           },
         }
       );
+
+      if (response.status < 200 || response.status >= 300) {
+        throw new Error('Failed to check token!');
+      }
+
       return response.data;
-    } catch (error) {
-      throw new Error('Failed to check token!');
+    } catch (error: any) { // Especificando 'any' para o tipo de 'error'
+      if (error.response && error.response.data && error.response.data.message) {
+        throw new Error(error.response.data.message);
+      } else {
+        throw new Error('Failed to check token!');
+      }
     }
   }
 }
+
 
 export default UserAuthService;
