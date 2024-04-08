@@ -28,8 +28,9 @@ const AuthService = {
         { username, email, password }
       );
       return response.data;
-    } catch (error) {
-      throw new Error('O usuário/email já existem.');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      throw new Error(error.response.data.error);
     }
   },
   login: async (username: string, password: string): Promise<LoginResponse> => {

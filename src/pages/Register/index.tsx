@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { ButtonStyled, Form } from './styles';
-import { AuthContext } from '../../contexts/AuthContext';
 import { PasswordInput } from '../../components/Inputs/PasswordInput';
 import { InputStyled } from '../../components/Inputs/styles';
 import AuthService from '../../Services/authService';
@@ -18,13 +17,7 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
 
   const [usernameError, setUsernameError] = useState('');
   const [error, setError] = useState('');
-  const { setUser, user } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (user) {
-      setPoppupVisible(false);
-    }
-  }, [user, setPoppupVisible]);
+  const [createSucess, setCreateSucess] = useState(false);
 
   const handleSubmit = async (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
@@ -50,8 +43,12 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
 
     try {
       await AuthService.createUser(username, password, email);
-      setUser(username);
-      setPoppupVisible(false);
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+      setUsername('');
+      setCreateSucess(true);
+      setPoppupVisible(true);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setUsernameError(err.message);
@@ -61,9 +58,14 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <div>
+        {createSucess ? (
+          <p style={{ color: '#25ff25' }}>Usuário criado com sucesso!</p>
+        ) : null}
+
         <InputStyled
           placeholder="Email"
           type="email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           onBlur={() => {
             const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -78,6 +80,7 @@ const Register: React.FC<Props> = ({ setPoppupVisible }) => {
         <InputStyled
           placeholder="Username"
           type="text"
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <p style={{ color: 'red' }}>{usernameError}</p>
