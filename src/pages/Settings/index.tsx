@@ -16,15 +16,24 @@ const Settings: React.FC = () => {
   const [gender, setGender] = useState('');
   const [birthdate, setBirthdate] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState<string>(''); 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const userData: any = {};
+    if (username) userData.username = username;
+    if (phone) userData.phone = phone;
+    if (email) userData.email = email;
+    if (country) userData.country = country;
+    if (gender) userData.gender = gender;
+    if (birthdate) userData.birthdate = birthdate;
+    if (password) userData.password = password;
+
     try {
-      const userData = { username, phone, email, country, gender, birthdate, password };
       await UserAuthService.updateUser(userData);
       console.log('Configurações atualizadas com sucesso!');
-    } catch (error: any) { // Defina 'error' como tipo 'any'
+    } catch (error: any) { 
       setError(error.message);
     }
   };
@@ -35,7 +44,7 @@ const Settings: React.FC = () => {
   };
 
   const validatePassword = (input: string): boolean => {
-    return input.length >= 6;
+    return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(input);
   };
 
   const validateDate = (input: string): boolean => {
@@ -66,11 +75,10 @@ const Settings: React.FC = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-            title="Insira um email válido"
+            onBlur={(e) => {
+              if (email && !validateEmail(email)) setError('Email inválido');
+            }}
           />
-          {email && !validateEmail(email) && <p>Email inválido</p>}
           <SettingsInput
             type="text"
             placeholder="País"
@@ -88,13 +96,8 @@ const Settings: React.FC = () => {
             placeholder="Data de nascimento"
             value={birthdate}
             onChange={(e) => setBirthdate(e.target.value)}
-            required
             onBlur={(e) => {
-              if (!validateDate(e.target.value)) {
-                setError('Data de nascimento inválida');
-              } else {
-                setError('');
-              }
+              if (birthdate && !validateDate(birthdate)) setError('Data de nascimento inválida');
             }}
           />
           <SettingsInput
@@ -102,14 +105,17 @@ const Settings: React.FC = () => {
             placeholder="Nova senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={6}
             onBlur={(e) => {
-              if (!validatePassword(e.target.value)) {
-                setError('A senha deve ter pelo menos 6 caracteres');
-              } else {
-                setError('');
-              }
+              if (password && !validatePassword(password)) setError('A senha deve ter pelo menos 8 caracteres e conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial');
+            }}
+          />
+          <SettingsInput
+            type="password"
+            placeholder="Confirmar Nova senha"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            onBlur={(e) => {
+              if (confirmPassword && confirmPassword !== password) setError('As senhas não coincidem');
             }}
           />
           <SettingsButton type="submit">Salvar</SettingsButton>
