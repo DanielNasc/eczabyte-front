@@ -93,7 +93,7 @@ function Layout({
           <AsideLink className="link-nav" to="/profile">
             <Button>
               <PersonIcon />
-              <IconText>IconTextrofile</IconText>
+              <IconText>Profile</IconText>
             </Button>
           </AsideLink>
           <AsideLink className="link-nav" to="/settings">

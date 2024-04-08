@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../../components/Layout';
+import UserAuthService from '../../Services/userAuthService';
 import {
   SettingsContainer,
   SettingsForm,
@@ -15,10 +16,30 @@ const Settings: React.FC = () => {
   const [gender, setGender] = useState('');
   const [birthdate, setBirthdate] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string>(''); 
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Implemente a lógica para enviar os dados de configuração para o servidor aqui
+    try {
+      const userData = { username, phone, email, country, gender, birthdate, password };
+      await UserAuthService.updateUser(userData);
+      console.log('Configurações atualizadas com sucesso!');
+    } catch (error: any) { // Defina 'error' como tipo 'any'
+      setError(error.message);
+    }
+  };
+
+  const validateEmail = (input: string): boolean => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(input);
+  };
+
+  const validatePassword = (input: string): boolean => {
+    return input.length >= 6;
+  };
+
+  const validateDate = (input: string): boolean => {
+    return input !== '';
   };
 
   return (
@@ -45,7 +66,11 @@ const Settings: React.FC = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            title="Insira um email válido"
           />
+          {email && !validateEmail(email) && <p>Email inválido</p>}
           <SettingsInput
             type="text"
             placeholder="País"
@@ -63,14 +88,32 @@ const Settings: React.FC = () => {
             placeholder="Data de nascimento"
             value={birthdate}
             onChange={(e) => setBirthdate(e.target.value)}
+            required
+            onBlur={(e) => {
+              if (!validateDate(e.target.value)) {
+                setError('Data de nascimento inválida');
+              } else {
+                setError('');
+              }
+            }}
           />
           <SettingsInput
             type="password"
             placeholder="Nova senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
+            minLength={6}
+            onBlur={(e) => {
+              if (!validatePassword(e.target.value)) {
+                setError('A senha deve ter pelo menos 6 caracteres');
+              } else {
+                setError('');
+              }
+            }}
           />
           <SettingsButton type="submit">Salvar</SettingsButton>
+          {error && <p>{error}</p>}
         </SettingsForm>
       </SettingsContainer>
     </Layout>
