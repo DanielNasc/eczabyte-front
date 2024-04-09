@@ -3,6 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 const API_URL = 'http://localhost:3000';
 
 interface LoginResponse {
+  id: string;
   token: string;
 }
 
@@ -40,6 +41,7 @@ const AuthService = {
         { username, password }
       );
       if (response.data.token) {
+        localStorage.setItem('id', response.data.id);
         localStorage.setItem('token', response.data.token);
       }
       return response.data;
