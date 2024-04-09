@@ -10,11 +10,7 @@ import {
 
 const Settings: React.FC = () => {
   const [username, setUsername] = useState('');
-  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [country, setCountry] = useState('');
-  const [gender, setGender] = useState('');
-  const [birthdate, setBirthdate] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState<string>(''); 
@@ -23,11 +19,7 @@ const Settings: React.FC = () => {
     e.preventDefault();
     const userData: any = {};
     if (username) userData.username = username;
-    if (phone) userData.phone = phone;
     if (email) userData.email = email;
-    if (country) userData.country = country;
-    if (gender) userData.gender = gender;
-    if (birthdate) userData.birthdate = birthdate;
     if (password) userData.password = password;
 
     try {
@@ -47,10 +39,6 @@ const Settings: React.FC = () => {
     return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(input);
   };
 
-  const validateDate = (input: string): boolean => {
-    return input !== '';
-  };
-
   return (
     <Layout showHeader headerTitle="Settings">
       <SettingsContainer>
@@ -65,39 +53,12 @@ const Settings: React.FC = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
           <SettingsInput
-            type="tel"
-            placeholder="Telefone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <SettingsInput
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onBlur={(e) => {
               if (email && !validateEmail(email)) setError('Email inválido');
-            }}
-          />
-          <SettingsInput
-            type="text"
-            placeholder="País"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-          />
-          <SettingsInput
-            type="text"
-            placeholder="Gênero"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-          />
-          <SettingsInput
-            type="date"
-            placeholder="Data de nascimento"
-            value={birthdate}
-            onChange={(e) => setBirthdate(e.target.value)}
-            onBlur={(e) => {
-              if (birthdate && !validateDate(birthdate)) setError('Data de nascimento inválida');
             }}
           />
           <SettingsInput
