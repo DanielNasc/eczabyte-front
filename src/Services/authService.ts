@@ -4,6 +4,7 @@ const API_URL = 'http://localhost:3000';
 
 interface LoginResponse {
   token: string;
+  id: string;
 }
 
 interface CreateUserResponse {
@@ -28,7 +29,6 @@ const AuthService = {
         { username, email, password }
       );
       return response.data;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       throw new Error(error.response.data.error);
     }
@@ -41,6 +41,7 @@ const AuthService = {
       );
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('id', response.data.id); // Armazena o ID do usuário no localStorage
       }
       return response.data;
     } catch (error) {
@@ -49,9 +50,13 @@ const AuthService = {
   },
   logout: (): void => {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId'); // Remove também o ID do usuário ao fazer logout
   },
   getToken: (): string | null => {
     return localStorage.getItem('token');
+  },
+  getUserId: (): string | null => {
+    return localStorage.getItem('userId'); // Função para obter o ID do usuário do localStorage
   },
   checkToken: async (): Promise<TokenCheckResponse> => {
     const token = localStorage.getItem('token');

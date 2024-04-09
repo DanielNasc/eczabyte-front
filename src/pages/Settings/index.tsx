@@ -13,7 +13,8 @@ const Settings: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState<string>(''); 
+  const [error, setError] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,9 +25,16 @@ const Settings: React.FC = () => {
 
     try {
       await UserAuthService.updateUser(userData);
-      console.log('Configurações atualizadas com sucesso!');
-    } catch (error: any) { 
+      setSuccessMessage('Configurações atualizadas com sucesso!');
+      setError('');
+      // Limpa os campos após a atualização bem-sucedida
+      setUsername('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+    } catch (error: any) {
       setError(error.message);
+      setSuccessMessage('');
     }
   };
 
@@ -36,14 +44,39 @@ const Settings: React.FC = () => {
   };
 
   const validatePassword = (input: string): boolean => {
-    return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(input);
+    return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
+      input
+    );
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    if (validateEmail(e.target.value)) {
+      setError(''); // Limpa o erro se o email for válido
+    } else {
+      setError('Email inválido');
+    }
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+    if (validatePassword(e.target.value)) {
+      setError(''); // Limpa o erro se a senha for válida
+    } else {
+      setError(
+        'A senha deve ter pelo menos 8 caracteres e conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial'
+      );
+    }
   };
 
   return (
     <Layout showHeader headerTitle="Settings">
       <SettingsContainer>
         <div className="user-data">
-          <h2>User</h2>
+          <h2>Alterar Dados</h2>
+          {successMessage && (
+            <p className="success-message">{successMessage}</p>
+          )}
         </div>
         <SettingsForm onSubmit={handleSubmit}>
           <SettingsInput
@@ -57,18 +90,12 @@ const Settings: React.FC = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            onBlur={(e) => {
-              if (email && !validateEmail(email)) setError('Email inválido');
-            }}
           />
           <SettingsInput
             type="password"
             placeholder="Nova senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            onBlur={(e) => {
-              if (password && !validatePassword(password)) setError('A senha deve ter pelo menos 8 caracteres e conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial');
-            }}
           />
           <SettingsInput
             type="password"
@@ -76,7 +103,8 @@ const Settings: React.FC = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             onBlur={(e) => {
-              if (confirmPassword && confirmPassword !== password) setError('As senhas não coincidem');
+              if (confirmPassword && confirmPassword !== password)
+                setError('As senhas não coincidem');
             }}
           />
           <SettingsButton type="submit">Salvar</SettingsButton>

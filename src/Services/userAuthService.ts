@@ -19,19 +19,18 @@ interface UpdateUserResponse {
 class UserAuthService {
   public static async updateUser(userData: Partial<User>): Promise<UpdateUserResponse> {
     const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId'); // Recupera o ID do usuário do localStorage
-  
+    const userId = localStorage.getItem('id');
+
     if (!token) {
       throw new Error('Token not found!');
     }
   
     if (!userId) {
       throw new Error('User ID not found!');
-    }
-  
+    } 
     try {
       const response: AxiosResponse<UpdateUserResponse> = await axios.put(
-        `${API_URL}/api/users/${userId}`, // Usa o ID do usuário recuperado do localStorage
+        `${API_URL}/api/v1/users/${userId}`, // Usa o ID do usuário recuperado do localStorage
         userData,
         {
           headers: {
