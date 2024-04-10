@@ -10,7 +10,7 @@ export const ContainerMain = styled.div`
 export const ContainerPoppup = styled.div`
   width: 500px;
   padding: 20px;
-  background: #190b28;
+  background: black;
   border-radius: 15px;
 
   height: 100%;

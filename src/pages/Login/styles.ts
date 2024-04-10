@@ -56,10 +56,10 @@ export const ButtonStyled = styled.input`
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 10px;
-  background: #2e134a;
+  background: white;
   border: none;
   font-size: 20px;
-  color: #9a87ad;
+  color: black;
   font-weight: bolder;
   cursor: pointer;
 `;
