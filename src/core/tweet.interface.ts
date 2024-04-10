@@ -1,5 +1,5 @@
 interface TweetInterface {
-  id: number;
+  id: string;
   name: string;
   user: string;
   text: string;

@@ -26,10 +26,12 @@ import {
   BellIcon,
 } from '../../pages/Home/styles';
 import Header from '../Header';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { AuthContext } from '../../contexts/AuthContext';
+import axios from 'axios';
 
 type LayoutType = {
   children: React.ReactNode;
@@ -49,6 +51,8 @@ function Layout({
   backTo = '/',
 }: LayoutType) {
   const [addTweet, setAddTweet] = useState<boolean>(false);
+  const { user } =  useContext(AuthContext) 
+  const id = localStorage.getItem('id')
 
   return (
     <>
@@ -59,6 +63,17 @@ function Layout({
           }}
         >
           <NewTweetForm
+            onSubmit={async (e) => {
+              e.preventDefault();
+              
+              await axios.post("http://localhost:3000/tweets", {
+                author: user?.email,
+                content: (document.getElementById('tweet-message') as HTMLTextAreaElement).value,
+                idUser: id
+              })
+
+              setAddTweet(false);
+            }}
             action="."
             method="post"
             onClick={(e) => e.stopPropagation()}
@@ -71,7 +86,7 @@ function Layout({
               placeholder="Use sua imaginação..."
             />
             <CreateTweetBtn
-              onClick={() => setAddTweet(false)}
+            type='submit'
               style={{
                 margin: 0,
                 maxWidth: '140px',

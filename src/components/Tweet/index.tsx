@@ -18,6 +18,15 @@ import {
 } from './styles';
 import TweetInterface from '../../core/tweet.interface';
 
+function formatarDataParaPadraoBR(data: Date) {
+  const dia = String(data.getDate()).padStart(2, '0');
+  const mes = String(data.getMonth() + 1).padStart(2, '0');
+  const ano = data.getFullYear();
+
+  return `${dia}/${mes}/${ano}`;
+}
+
+
 const Tweet: React.FC<TweetInterface> = (tweet: TweetInterface) => {
   const [showComents, setShowComents] = useState<boolean>(false);
 
@@ -44,7 +53,7 @@ const Tweet: React.FC<TweetInterface> = (tweet: TweetInterface) => {
               <div>
                 <p>@{tweet.user}</p>
                 <Dot />
-                <time>{tweet.date}</time>
+                <time>{formatarDataParaPadraoBR(new Date(tweet.date))}</time>
               </div>
             </Header>
           </div>
