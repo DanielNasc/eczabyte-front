@@ -41,7 +41,6 @@ const AuthService = {
         { username, password }
       );
       if (response.data.token) {
-        localStorage.setItem('id', response.data.id);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('id', response.data.id); // Armazena o ID do usuário no localStorage
       }
@@ -52,7 +51,7 @@ const AuthService = {
   },
   logout: (): void => {
     localStorage.removeItem('token');
-    localStorage.removeItem('userId'); // Remove também o ID do usuário ao fazer logout
+    localStorage.removeItem('id'); // Remove também o ID do usuário ao fazer logout
   },
   getToken: (): string | null => {
     return localStorage.getItem('token');
