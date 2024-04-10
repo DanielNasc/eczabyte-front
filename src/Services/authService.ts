@@ -5,7 +5,6 @@ const API_URL = 'http://localhost:3000';
 interface LoginResponse {
   id: string;
   token: string;
-  id: string;
 }
 
 interface CreateUserResponse {
@@ -30,7 +29,7 @@ const AuthService = {
         { username, email, password }
       );
       return response.data;
-    } catch (error: any) {
+    } catch (error) {
       throw new Error(error.response.data.error);
     }
   },

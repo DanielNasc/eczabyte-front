@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Feed from '../../components/Feed';
 import {
   Avatar,
@@ -11,8 +11,21 @@ import {
   Tab,
 } from './styles';
 import Layout from '../../components/Layout';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Profile: React.FC = () => {
+  const navigate = useNavigate()
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!user) {
+      console.log("no user ", user);
+      
+      navigate("/")
+    }
+  }, [user, navigate])
+
   return (
     <Layout>
       <Banner>
@@ -21,8 +34,8 @@ const Profile: React.FC = () => {
       <ProfileData>
         <EditButton outlined>Editar perfil</EditButton>
 
-        <h2>Eczabyte ユーザー 👤</h2>
-        <h3>@eczabyte</h3>
+        <h2>{user?.username}👤</h2>
+        <h3>{user?.username}</h3>
         <p>
           Pessoa do planeta terra, usuário do{' '}
           <a href="https://eczabyte.com">eczabyte.com</a>.
